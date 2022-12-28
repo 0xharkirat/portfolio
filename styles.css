@@ -245,7 +245,7 @@
   .hero {
     position: absolute;
     top: 50%;
-    transform: translate(30%, -50%);
+    transform: translate(65%, -50%);
     color: #fff;
   }
   
@@ -797,8 +797,3 @@
   footer p span {
     color: var(--customColor);
   }
-
-
-.typeit{
-    color: var(--customColor);
-}
