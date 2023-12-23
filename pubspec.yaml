@@ -67,6 +67,10 @@ flutter:
     - family: Acorn
       fonts:
         - asset: assets/fonts/Acorn-Regular.ttf
+    
+    - family: Gt
+      fonts:
+        - asset: assets/fonts/gt.woff
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
