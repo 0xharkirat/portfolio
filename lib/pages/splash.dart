@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/contants/colors.dart';
-import 'package:portfolio/contants/fonts.dart';
+import 'package:portfolio/constants/colors.dart';
+import 'package:portfolio/constants/fonts.dart';
 import 'package:portfolio/pages/home.dart';
 
 class SplashPage extends StatefulWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/contants/colors.dart';
+import 'package:portfolio/constants/colors.dart';
 
 const kAcornFonts = "Acorn";
 const kGtFonts = "Gt";
@@ -18,3 +18,12 @@ TextStyle subTitleStyle = const TextStyle(
   color: kTextColor,
   fontFamily: kGtFonts,
 );
+
+TextStyle bodyTextStyle = const TextStyle(
+  fontSize: 16,
+  color: kTextColor,
+  fontFamily: kGtFonts,
+);
+
+
+
