@@ -12,6 +12,14 @@ TextStyle headlineStyle = const TextStyle(
     // You can add more styling properties as needed
     );
 
+TextStyle headlineStyle2 = const TextStyle(
+    fontSize: 48.0,
+    fontWeight: FontWeight.bold,
+    color: Colors.white,
+    fontFamily: kAcornFonts
+    // You can add more styling properties as needed
+    );
+
 TextStyle subTitleStyle = const TextStyle(
   fontSize: 20,
   fontWeight: FontWeight.w400,
