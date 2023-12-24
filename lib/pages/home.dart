@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
-              color: Colors.white10,
+              color: Colors.white12,
             ),
             padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
             child: Row(
@@ -73,13 +73,17 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _navItem(String title) {
-    return TextButton(
-      onPressed: () {
-        // Handle navigation or other actions
-      },
-      child: Text(
-        title,
-        style: bodyTextStyle, // Adjust text color as needed
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: OutlinedButton(
+        
+        onPressed: () {
+          // Handle navigation or other actions
+        },
+        child: Text(
+          title,
+          style: bodyTextStyle, // Adjust text color as needed
+        ),
       ),
     );
   }
