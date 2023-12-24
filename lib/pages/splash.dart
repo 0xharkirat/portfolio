@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/constants/colors.dart';
 import 'package:portfolio/constants/fonts.dart';
-import 'package:portfolio/pages/home.dart';
+import 'package:portfolio/pages/app_view.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -48,7 +48,7 @@ class _SplashPageState extends State<SplashPage> {
 
 Route _createRoute() {
   return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => const HomePage(),
+    pageBuilder: (context, animation, secondaryAnimation) => const AppView(),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       
       return FadeTransition(
