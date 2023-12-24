@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/pages/home.dart';
 import 'package:portfolio/pages/route_view.dart';
 import 'package:portfolio/routes/route_generator.dart';
 import 'package:portfolio/routes/routes.dart';
