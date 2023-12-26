@@ -28,7 +28,7 @@ TextStyle subTitleStyle = const TextStyle(
 );
 
 TextStyle bodyTextStyle = const TextStyle(
-  fontSize: 16,
+  fontSize: 20,
   color: kTextColor,
   fontFamily: kGtFonts,
 );

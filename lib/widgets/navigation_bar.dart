@@ -13,15 +13,23 @@ class NavigationBarWeb extends StatelessWidget {
     return Container(
       
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(50),
+        borderRadius: BorderRadius.circular(5),
         color: Colors.white12,
+        boxShadow: [
+      BoxShadow(
+        color: Colors.black.withOpacity(0.3), // Shadow color
+        spreadRadius: 2, // How far the shadow should spread
+        blurRadius: 5, // How blurry the shadow should be
+        offset: const Offset(0, 2), // Offset of the shadow
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+    ],
+      ),
+      padding: const EdgeInsets.all(20),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           const NavItem(title: "Home", routeName: routeHome,),
-          const NavItem(title: "About", routeName: routeAbout,),
+          const NavItem(title: "About", routeName: "https://hushed-boat-f59.notion.site/Harkirat-Singh-6d452426417d45abab18966092930cf6",),
           const NavItem(title: "Projects", routeName: routeProjects,),
           _contactNav()
         ],

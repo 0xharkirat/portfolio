@@ -42,6 +42,7 @@ class HomePageState extends State<HomePage> {
           ),
         ),
         MouseRegion(
+          opaque: false,
           cursor: SystemMouseCursors.grabbing,
           onEnter: (_) {
             setState(() {
@@ -62,7 +63,7 @@ class HomePageState extends State<HomePage> {
               width: 400,
               height: 400,
               fit: BoxFit.cover,
-              colorBlendMode: BlendMode.overlay,
+              
             ),
           ),
         ),
