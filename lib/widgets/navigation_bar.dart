@@ -29,7 +29,7 @@ class NavigationBarWeb extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           const NavItem(title: "Home", routeName: routeHome,),
-          const NavItem(title: "About", routeName: "https://hushed-boat-f59.notion.site/Harkirat-Singh-6d452426417d45abab18966092930cf6",),
+          const NavItem(title: "About", routeName: routeAbout,),
           const NavItem(title: "Projects", routeName: routeProjects,),
           _contactNav()
         ],

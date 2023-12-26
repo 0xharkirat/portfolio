@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/pages/splash.dart';
 
-
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -18,5 +18,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
