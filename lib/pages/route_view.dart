@@ -8,23 +8,17 @@ class RouteView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        constraints: const BoxConstraints.expand(),
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage("images/background.gif"), fit: BoxFit.cover),
-        ),
-        child: Stack(
-          alignment: Alignment.topCenter,
-          clipBehavior: Clip.none,
-          children: [
-            child,
-            const Positioned(
-              top: 30,
-              child: NavigationBarWeb(),),
-            
-          ],
-        ),
+      backgroundColor: Colors.transparent,
+      body: Stack(
+        alignment: Alignment.topCenter,
+        clipBehavior: Clip.none,
+        children: [
+          child,
+          const Positioned(
+            top: 30,
+            child: NavigationBarWeb(),),
+          
+        ],
       ),
     );
   }

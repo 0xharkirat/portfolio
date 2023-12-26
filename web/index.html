@@ -17,6 +17,7 @@
   <base href="$FLUTTER_BASE_HREF">
 
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="A new Flutter project.">
 
@@ -40,6 +41,47 @@
   <script src="flutter.js" defer></script>
 </head>
 <body>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    canvas {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    main,
+    canvas {
+      display: block;
+    }
+
+    :root {
+      --pad: max(20px, 4vmin);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --c-bg: hsl(0, 0%, 5%);
+      }
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      background-color: var(--c-bg);
+    }
+
+    body.is-monospaced {
+      font-family: "Neue Montreal Mono";
+    }
+  </style>
+
   <script>
     window.addEventListener('load', function(ev) {
       // Download main.dart.js
@@ -55,5 +97,18 @@
       });
     });
   </script>
+
+<div id="Page">
+  <div id="Background">
+    <canvas></canvas>
+  </div>
+
+  <main class="content" id="Content" data-scroll="area">
+    <div class="content_inner" data-scroll="target"></div>
+  </main>
+</div>
+
+
+<script src="main.js"></script>
 </body>
 </html>

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/constants/colors.dart';
 import 'package:portfolio/constants/fonts.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,17 +15,8 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kBackgroundColor,
-      body: Container(
-        constraints: const BoxConstraints.expand(),
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("images/background.gif"),
-            fit: BoxFit.cover
-          ),
-        ),
-        child: _heroSection()
-      ),
+      backgroundColor: Colors.transparent,
+      body: _heroSection(),
     );
   }
 
