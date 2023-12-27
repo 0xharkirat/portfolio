@@ -1,17 +1,45 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/constants/colors.dart';
+
 import 'package:portfolio/constants/fonts.dart';
+import 'package:portfolio/widgets/staggered_grid_layout.dart';
 
 class ProjectPage extends StatelessWidget {
   const ProjectPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: kBackgroundColor,
-      body: Center(
-        child: Text("Project Page", style: bodyTextStyle,),
-      ),
-    );
+        backgroundColor: Colors.transparent,
+        body: SingleChildScrollView(
+          padding: EdgeInsets.symmetric(vertical: size.height / 3),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Big Title
+               Center(
+                child: Text(
+                  "Projects.",
+                  style: headlineStyle,
+                ),
+              ),
+              const SizedBox(height: 16),
+              // Subtitle
+               Center(
+                child: Text(
+                  "A collection of apps, websites, packages and tools that I've created to be helpful, fun & sometimes just to show off.",
+                  style: subTitleStyle,
+                ),
+              ),
+              const SizedBox(height: 96),
+              // Staggered Grid Layout
+              const StaggeredGridLayout(),
+            ],
+          ),
+        ),
+      );
+    
   }
 }
+
+

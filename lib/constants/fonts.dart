@@ -33,5 +33,20 @@ TextStyle bodyTextStyle = const TextStyle(
   fontFamily: kGtFonts,
 );
 
+TextStyle descriptionTextStyle = const TextStyle(
+  fontSize: 18,
+  color: Colors.white,
+  fontFamily: kGtFonts,
+);
+
+
+TextStyle titleTextStyle = const TextStyle(
+  fontSize: 20,
+  fontWeight: FontWeight.w900,
+  color: Colors.white54,
+  fontFamily: kGtFonts,
+);
+
+
 
 
