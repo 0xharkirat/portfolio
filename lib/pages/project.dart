@@ -25,10 +25,14 @@ class ProjectPage extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               // Subtitle
-               Center(
-                child: Text(
-                  "A collection of apps, websites, packages and tools that I've created to be helpful, fun & sometimes just to show off.",
-                  style: subTitleStyle,
+               Container(
+                width: size.width/2,
+                child: Expanded(
+                  child: Text(
+                    "A collection of apps, websites, packages and tools that I've created to be helpful, fun & sometimes just to show off.",
+                    style: subTitleStyle,
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ),
               const SizedBox(height: 96),
