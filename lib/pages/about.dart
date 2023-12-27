@@ -38,7 +38,7 @@ class AboutPage extends StatelessWidget {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Colors.white30, width: 2),
+                  border: Border.all(color: Colors.white30,),
                   color: Colors.black54,
                   boxShadow: [
                     BoxShadow(
@@ -53,24 +53,18 @@ class AboutPage extends StatelessWidget {
                   decoration: const BoxDecoration(
                     
                     border: Border(
-                        top: BorderSide(color: Colors.white30, width: 2),
-                        left: BorderSide(color: Colors.white30, width: 2),
+                        top: BorderSide(color: Colors.white30, ),
+                        left: BorderSide(color: Colors.white30,),
                         right: BorderSide(
                           color: Colors.white30,
-                          width: 2,
-                        )),
+                          
+                        ),),
                   ),
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(10),
-                      topRight: Radius.circular(10),
-                    ),
-                    child: FadeInImage.memoryNetwork(
-                      placeholder: kTransparentImage,
-                      image: "assets/images/about.png",
-                      fit: BoxFit.fitWidth,
-                      alignment: Alignment.topCenter,
-                    ),
+                  child: FadeInImage.memoryNetwork(
+                    placeholder: kTransparentImage,
+                    image: "assets/images/about.png",
+                    fit: BoxFit.fitWidth,
+                    alignment: Alignment.topCenter,
                   ),
                 ),
               ),

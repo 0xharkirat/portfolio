@@ -13,7 +13,7 @@ class SmallerContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         padding: const EdgeInsets.all(40),
-        height: 200,
+        height: 250,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           border: Border.all(color: Colors.white38),
