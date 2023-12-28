@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:portfolio/model/project_model.dart';
 import 'package:portfolio/widgets/larger_container.dart';
@@ -9,36 +10,105 @@ class StaggeredGridLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    int crossAxisCount;
+
+    if (size.width < 767) {
+      crossAxisCount = 1;
+    } else if (size.width > 1390) {
+      crossAxisCount = 3;
+    } else {
+      crossAxisCount = 2;
+    }
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
       child: StaggeredGrid.count(
-        crossAxisCount: 3,
-        crossAxisSpacing: 25,
-        mainAxisSpacing: 25,
-        children: gridItems
-          
-      ),
+          crossAxisCount: crossAxisCount,
+          crossAxisSpacing: 25,
+          mainAxisSpacing: 25,
+          children: gridItems(size.width)),
     );
   }
 
-  List<Widget> get gridItems {
+  List<Widget> gridItems(double width) {
     final List<Widget> gridItems = [];
 
     for (var i = 0; i < 9; i++) {
-      if (i == 2 || i == 4 || i == 6) {
-        gridItems.add(
-          LargerContainer(
+      if (width > 1390) {
+        if (i == 2 || i == 4 || i == 6) {
+          gridItems.add(
+            LargerContainer(
               title: projectData[i].title,
               subtitle: projectData[i].subtitle,
-              imgPath: projectData[i].imgPath),
-        );
+              imgPath: projectData[i].imgPath,
+            )
+                .animate()
+                .fadeIn(delay: (0.9 + (i * 0.2)).seconds, duration: .35.seconds)
+                .moveY(),
+          );
+        } else {
+          gridItems.add(
+            SmallerContainer(
+              title: projectData[i].title,
+              subtitle: projectData[i].subtitle,
+              imgPath: projectData[i].imgPath,
+            )
+                .animate()
+                .fadeIn(delay: (0.9 + (i * 0.2)).seconds, duration: .35.seconds)
+                .moveY(),
+          );
+        }
       } else {
-        gridItems.add(
-          SmallerContainer(
+        if (i == 2 || i == 4 || i == 5 || i == 6) {
+          if (i == 5) {
+            gridItems.add(
+              LargerContainer(
+                title: projectData[6].title,
+                subtitle: projectData[6].subtitle,
+                imgPath: projectData[6].imgPath,
+              )
+                  .animate()
+                  .fadeIn(
+                      delay: (0.9 + (i * 0.2)).seconds, duration: .35.seconds)
+                  .moveY(),
+            );
+          } else if (i == 6) {
+            gridItems.add(
+              SmallerContainer(
+                title: projectData[5].title,
+                subtitle: projectData[5].subtitle,
+                imgPath: projectData[5].imgPath,
+              )
+                  .animate()
+                  .fadeIn(
+                      delay: (0.9 + (i * 0.2)).seconds, duration: .35.seconds)
+                  .moveY(),
+            );
+          } else {
+            gridItems.add(
+              LargerContainer(
+                title: projectData[i].title,
+                subtitle: projectData[i].subtitle,
+                imgPath: projectData[i].imgPath,
+              )
+                  .animate()
+                  .fadeIn(
+                      delay: (0.9 + (i * 0.2)).seconds, duration: .35.seconds)
+                  .moveY(),
+            );
+          }
+        } else {
+          gridItems.add(
+            SmallerContainer(
               title: projectData[i].title,
               subtitle: projectData[i].subtitle,
-              imgPath: projectData[i].imgPath),
-        );
+              imgPath: projectData[i].imgPath,
+            )
+                .animate()
+                .fadeIn(delay: (0.9 + (i * 0.2)).seconds, duration: .35.seconds)
+                .moveY(),
+          );
+        }
       }
     }
 

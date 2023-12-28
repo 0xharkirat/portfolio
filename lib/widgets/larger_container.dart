@@ -15,9 +15,11 @@ class LargerContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Container(
       padding: const EdgeInsets.fromLTRB(40, 40, 40, 0),
-      height: 500,
+      height: size.width > 600? 500: 400,
+      width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
@@ -52,6 +54,7 @@ class LargerContainer extends StatelessWidget {
           ),
           Expanded(
             child: Container(
+              height: size.width > 600? 150: 50,
               width: double.infinity,
               decoration: const BoxDecoration(
                 border: Border(
