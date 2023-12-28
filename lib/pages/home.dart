@@ -128,7 +128,7 @@ class AnimatedImage extends StatelessWidget {
           fit: BoxFit.cover,
         )
             .animate(target: isMouseOverImage ? 1 : 0)
-            .scaleXY(end: 0, alignment: const Alignment(0, -0.3))
+            .scaleXY(begin: 0, alignment: const Alignment(0, -0.3))
             .then()
             .shimmer(angle: -1.57, size: 2, duration: 1.seconds));
   }
