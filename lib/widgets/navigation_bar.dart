@@ -4,15 +4,21 @@ import 'package:portfolio/constants/fonts.dart';
 import 'package:portfolio/routes/routes.dart';
 import 'package:portfolio/widgets/nav_item.dart';
 
-class NavigationBarWeb extends StatelessWidget {
+class NavigationBarWeb extends StatefulWidget {
   const NavigationBarWeb({super.key});
 
+  @override
+  State<NavigationBarWeb> createState() => _NavigationBarWebState();
+}
+
+class _NavigationBarWebState extends State<NavigationBarWeb> {
+  int index = 0;
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
     return Container(
-      width: size.width > 767? 450: size.width* 0.7,
+      width: size.width > 767 ? 450 : size.width * 0.7,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
         color: Colors.black12,
@@ -27,20 +33,26 @@ class NavigationBarWeb extends StatelessWidget {
       ),
       padding: const EdgeInsets.all(20),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         mainAxisSize: MainAxisSize.min,
         children: [
-          const NavItem(
+          NavItem(
             title: "Home",
             routeName: routeHome,
+            selected: index == 0,
+            onHighlight: onHighlight,
           ),
-          const NavItem(
+          NavItem(
             title: "About",
             routeName: routeAbout,
+            selected: index == 1,
+            onHighlight: onHighlight,
           ),
-          const NavItem(
+          NavItem(
             title: "Projects",
             routeName: routeProjects,
+            selected: index == 2,
+            onHighlight: onHighlight,
           ),
           _contactNav(size)
         ],
@@ -51,18 +63,35 @@ class NavigationBarWeb extends StatelessWidget {
   Widget _contactNav(Size size) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      child: GestureDetector(
+      child: InkWell(
+        mouseCursor: SystemMouseCursors.click,
         onTap: () {},
         child: Text(
           "Contact",
           style: bodyTextStyle.copyWith(
-                fontSize: size.width > 600
-                    ? 20
-                    : (size.width / 600) *
-                        20 *
-                        0.7), 
+              fontSize: size.width > 600 ? 16 : (size.width / 600) * 20 * 0.7),
         ),
       ),
     );
+  }
+
+  void onHighlight(String route) {
+    switch (route) {
+      case routeHome:
+        changeHighlight(0);
+        break;
+      case routeAbout:
+        changeHighlight(1);
+        break;
+      case routeProjects:
+        changeHighlight(2);
+        break;
+    }
+  }
+
+  void changeHighlight(int newIndex) {
+    setState(() {
+      index = newIndex;
+    });
   }
 }

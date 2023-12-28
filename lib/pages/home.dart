@@ -40,50 +40,53 @@ class HomePageState extends State<HomePage> {
                 AnimatedOpacity(
                   opacity: isMouseOverImage ? 0.0 : 1.0,
                   duration: const Duration(milliseconds: 300),
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Hi. I'm Harkirat.",
-                          style: headlineStyle.copyWith(
-                              fontSize: size.width > 600
-                                  ? 96
-                                  : (size.width / 600) * 96 * 0.7),
-                          textAlign: TextAlign.center,
-                        )
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Hi. I'm Harkirat.",
+                            style: headlineStyle.copyWith(
+                                fontSize: size.width > 600
+                                    ? 96
+                                    : (size.width / 600) * 96 * 0.7),
+                            textAlign: TextAlign.center,
+                          )
+                              .animate()
+                              .fadeIn(delay: .5.seconds, duration: .35.seconds)
+                              .slide(end: const Offset(0, .2)),
+                          Text(
+                            "A Developer.",
+                            style: headlineStyle.copyWith(
+                                fontSize: size.width > 600
+                                    ? 96
+                                    : (size.width / 600) * 96 * 0.7),
+                            textAlign: TextAlign.center,
+                          )
+                              .animate()
+                              .fadeIn(delay: .7.seconds, duration: .35.seconds)
+                              .slide(end: const Offset(0, .2)),
+                          const SizedBox(height: 14),
+                          Text(
+                            "I am learning & creating better technologies for the greater good of Humanity.",
+                            style: subTitleStyle.copyWith(
+                                fontSize: size.width > 600
+                                    ? 20
+                                    : (size.width / 600) * 40 * 0.7),
+                            textAlign: TextAlign.center,
+                          )
+                              .animate()
+                              .fadeIn(delay: .9.seconds, duration: .35.seconds)
+                              .slide(end: const Offset(0, .2)),
+                        ]
                             .animate()
-                            .fadeIn(delay: .5.seconds, duration: .35.seconds)
-                            .slide(end: const Offset(0, .2)),
-                        Text(
-                          "A Developer.",
-                          style: headlineStyle.copyWith(
-                              fontSize: size.width > 600
-                                  ? 96
-                                  : (size.width / 600) * 96 * 0.7),
-                          textAlign: TextAlign.center,
-                        )
-                            .animate()
-                            .fadeIn(delay: .7.seconds, duration: .35.seconds)
-                            .slide(end: const Offset(0, .2)),
-                        const SizedBox(height: 14),
-                        Text(
-                          "I am learning & creating better technologies for the greater good of Humanity.",
-                          style: subTitleStyle.copyWith(
-                              fontSize: size.width > 600
-                                  ? 20
-                                  : (size.width / 600) * 40 * 0.7),
-                          textAlign: TextAlign.center,
-                        )
-                            .animate()
-                            .fadeIn(delay: .9.seconds, duration: .35.seconds)
-                            .slide(end: const Offset(0, .2)),
-                      ]
-                          .animate()
-                          .shimmer(delay: 2.seconds, duration: 1800.ms, size: 4)
-                          
-                          .scaleXY(end: 1.02, duration: 600.ms)
-                          .then(delay: 600.ms)
-                          .scaleXY(end: 1 / 1.02)),
+                            .shimmer(delay: 2.seconds, duration: 1800.ms, size: 4)
+                            
+                            .scaleXY(end: 1.02, duration: 600.ms)
+                            .then(delay: 600.ms)
+                            .scaleXY(end: 1 / 1.02)),
+                  ),
                 ),
                 size.width > 1024
                     ? MouseRegion(
