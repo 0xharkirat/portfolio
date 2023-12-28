@@ -1,8 +1,13 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flutter/material.dart';
 import 'package:portfolio/pages/splash.dart';
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  usePathUrlStrategy();
+
   runApp(const MyApp());
 }
 
