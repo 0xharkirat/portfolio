@@ -24,34 +24,34 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body: const Center(
+      body: Center(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               "Harkirat Singh",
               style: TextStyle(
                   color: kTextColor,
                   fontWeight: FontWeight.bold,
                   fontFamily: kAcornFonts,
                   fontSize: 28),
-            ),
-            SizedBox(
+            ).animate()
+      .fadeOut(delay: 1.seconds, curve: Curves.easeOut),
+           const SizedBox(
               width: 5,
             ),
-            Text(
+           const Text(
               "Portfolio",
               style: TextStyle(
                   color: kTextColor,
                   fontWeight: FontWeight.w100,
                   fontFamily: kAcornFonts,
                   fontSize: 28),
-            )
+            ).animate()
+            .fadeOut(delay: 1.2.seconds,curve: Curves.easeOut)
           ],
         ),
-      ).animate()
-      .fadeOut(delay: 1.seconds)
-      .moveX(),
+      )
     );
   }
 }
