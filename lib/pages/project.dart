@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
 import 'package:portfolio/constants/fonts.dart';
+import 'package:portfolio/widgets/footer.dart';
 import 'package:portfolio/widgets/staggered_grid_layout.dart';
 
 class ProjectPage extends StatelessWidget {
@@ -52,8 +53,14 @@ class ProjectPage extends StatelessWidget {
               const SizedBox(height: 96),
               // Staggered Grid Layout
               const StaggeredGridLayout(),
+              const SizedBox(
+            height: 96,
+           ),
+           const Footer()
             ],
+
           ),
+          
         ),
       ),
     );

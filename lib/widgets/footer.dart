@@ -67,13 +67,15 @@ class Footer extends StatelessWidget {
                               return AlertDialog(
                                 backgroundColor: Colors.transparent,
                                 content: Container(
-                                  padding: EdgeInsets.all(20),
+                                  padding: const EdgeInsets.all(20),
                                   width: 350,
                                   height: 300,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                     border: Border.all(color: Colors.white38),
-                                    color: Colors.black54,
+                                    color: Colors.black87,
+    
+        
                                   ),
                                   child: Row(
                                     

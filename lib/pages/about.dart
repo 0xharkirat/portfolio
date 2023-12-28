@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:portfolio/constants/fonts.dart';
 import 'package:portfolio/constants/urls.dart';
+import 'package:portfolio/widgets/footer.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'dart:js' as js;
 
@@ -125,6 +126,11 @@ class AboutPage extends StatelessWidget {
                   .animate()
                   .fadeIn(delay: 0.7.seconds, duration: .35.seconds)
                   .moveY(),
+
+                   const SizedBox(
+            height: 96,
+           ),
+           const Footer()
             ],
           ),
         ),
