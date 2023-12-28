@@ -44,7 +44,7 @@ class HomePageState extends State<HomePage> {
                     )
                         .animate()
                         .fadeIn(delay: .5.seconds, duration: .35.seconds)
-                        .slide(begin: const Offset(0, .2)),
+                        .slide(end: const Offset(0, .2)),
                     Text(
                       "A Developer.",
                       style: headlineStyle.copyWith(
@@ -55,7 +55,7 @@ class HomePageState extends State<HomePage> {
                     )
                         .animate()
                         .fadeIn(delay: .7.seconds, duration: .35.seconds)
-                        .slide(begin: const Offset(0, .2)),
+                        .slide(end: const Offset(0, .2)),
                     const SizedBox(height: 14),
                     Text(
                       "I am learning & creating better technologies for the greater good of Humanity.",
@@ -67,7 +67,7 @@ class HomePageState extends State<HomePage> {
                     )
                         .animate()
                         .fadeIn(delay: .9.seconds, duration: .35.seconds)
-                        .slide(begin: const Offset(0, .2)),
+                        .slide(end: const Offset(0, .2)),
                   ]
                       .animate()
                       .shimmer(delay: 2.seconds, duration: 1800.ms, size: 2)
@@ -128,7 +128,7 @@ class AnimatedImage extends StatelessWidget {
           fit: BoxFit.cover,
         )
             .animate(target: isMouseOverImage ? 1 : 0)
-            .scaleXY(begin: 0, alignment: const Alignment(0, -0.3))
+            .scaleXY(end: 0, alignment: const Alignment(0, -0.3))
             .then()
             .shimmer(angle: -1.57, size: 2, duration: 1.seconds));
   }
