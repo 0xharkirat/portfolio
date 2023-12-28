@@ -32,14 +32,17 @@ class Footer extends StatelessWidget {
                   Container(
                     width: double.infinity,
                     padding:
-                        const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                        const EdgeInsets.all(30),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(100),
                       color: Colors.black45,
                     ),
                     child: Text(
                       "🇦🇺 Working Remotely from 20°C Sydney, Australia.",
-                      style: bodyTextStyle.copyWith(fontSize: 16),
+                      style: bodyTextStyle.copyWith(
+                                fontSize: size.width > 600
+                                    ? 16
+                                    : (size.width / 600) * 20 * 0.7),
                     ),
                   ),
                   const SizedBox(
@@ -54,8 +57,9 @@ class Footer extends StatelessWidget {
                           child: Text(
                             "© 2023 Harkirat Singh • ",
                             style: bodyTextStyle.copyWith(
-                              fontSize: 16
-                            ),
+                                fontSize: size.width > 600
+                                    ? 16
+                                    : (size.width / 600) * 20 * 0.7),
                             softWrap: true,
                           ),
                         ),
