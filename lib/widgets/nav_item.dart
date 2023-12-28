@@ -10,6 +10,7 @@ class NavItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15.0),
       child: MouseRegion(
@@ -18,10 +19,14 @@ class NavItem extends StatelessWidget {
           onTap: () {
             navKey.currentState!.pushNamed(routeName);
           },
-          
           child: Text(
             title,
-            style: bodyTextStyle, // Adjust text color as needed
+            style: bodyTextStyle.copyWith(
+                fontSize: size.width > 600
+                    ? 20
+                    : (size.width / 600) *
+                        20 *
+                        0.7), // Adjust text color as needed
           ),
         ),
       ),
