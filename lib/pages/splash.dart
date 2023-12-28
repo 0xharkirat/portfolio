@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:portfolio/constants/colors.dart';
 import 'package:portfolio/constants/fonts.dart';
 import 'package:portfolio/pages/app_view.dart';
@@ -21,27 +22,36 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: Colors.transparent,
-      body: Center(child: 
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text("Harkirat Singh", style: TextStyle(
-            color: kTextColor,
-            fontWeight: FontWeight.bold,
-            fontFamily: kAcornFonts,
-            fontSize: 28
-          ),),
-          SizedBox(width: 5,),
-          Text("Portfolio", style: TextStyle(
-            color: kTextColor,
-            fontWeight: FontWeight.w100,
-            fontFamily: kAcornFonts,
-            fontSize: 28
-          ),)
-        ],
-      )),
+      body: const Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Harkirat Singh",
+              style: TextStyle(
+                  color: kTextColor,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: kAcornFonts,
+                  fontSize: 28),
+            ),
+            SizedBox(
+              width: 5,
+            ),
+            Text(
+              "Portfolio",
+              style: TextStyle(
+                  color: kTextColor,
+                  fontWeight: FontWeight.w100,
+                  fontFamily: kAcornFonts,
+                  fontSize: 28),
+            )
+          ],
+        ),
+      ).animate()
+      .fadeOut(delay: 1.seconds)
+      .moveX(),
     );
   }
 }
@@ -50,7 +60,6 @@ Route _createRoute() {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) => const AppView(),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      
       return FadeTransition(
         opacity: CurveTween(curve: Curves.linear).animate(animation),
         child: child,
