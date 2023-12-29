@@ -12,18 +12,13 @@ class ContactNotifier extends ChangeNotifier {
 
   void toggleContact(BuildContext context) {
     if (_entry == null) {
-      // Create and insert the new overlay
       _entry = OverlayEntry(
-        builder: (context) => Positioned(
-          bottom: 40,
-          right: 40,
-          child: ElevatedButton(
-            onPressed: () => closeContact(context),
-            child: const Text("close"),
-          ),
+        builder: (context) => ContactOveraly(
+          onClose: () {
+            closeContact(context);
+          },
         ),
       );
-
       final overlay = Overlay.of(context);
       overlay.insert(_entry!);
     } else {
@@ -38,5 +33,22 @@ class ContactNotifier extends ChangeNotifier {
     _entry?.remove();
     _entry = null;
     notifyListeners();
+  }
+}
+
+class ContactOveraly extends StatelessWidget {
+  const ContactOveraly({super.key, required this.onClose});
+  final VoidCallback onClose;
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      bottom: 40,
+      right: 40,
+      child: ElevatedButton(
+        onPressed: onClose,
+        child: const Text("close"),
+      ),
+    );
   }
 }
