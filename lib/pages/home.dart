@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:portfolio/constants/fonts.dart';
+import 'package:portfolio/constants/imgUrls.dart';
 import 'package:portfolio/widgets/footer.dart';
 
 class HomePage extends StatefulWidget {
@@ -146,8 +147,8 @@ class AnimatedImage extends StatelessWidget {
     return AnimatedOpacity(
         opacity: isMouseOverImage ? 1.0 : 0.0,
         duration: const Duration(milliseconds: 300),
-        child: Image.asset(
-          'assets/images/hark-logo.png', // Replace with your actual image path
+        child: Image.network(
+          harkLogo, // Replace with your actual image path
           width: size.width > 600 ? 400 : (size.width / 400) * 0.4,
           height: size.width > 600 ? 400 : (size.height / 400) * 0.4,
           fit: BoxFit.cover,

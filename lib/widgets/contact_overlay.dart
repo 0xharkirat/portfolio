@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio/constants/fonts.dart';
+import 'package:portfolio/constants/imgUrls.dart';
 import 'package:portfolio/constants/urls.dart';
 import 'package:portfolio/model/contact_model.dart';
 import 'package:portfolio/provider/chat_provider.dart';
@@ -75,7 +76,7 @@ class _ContactOverlayState extends ConsumerState<ContactOverlay> {
             ),
             child: FadeInImage.memoryNetwork(
               placeholder: kTransparentImage,
-              image: "assets/images/hark-logo.png",
+              image: harkLogo,
             ),
           ),
           title: Text(

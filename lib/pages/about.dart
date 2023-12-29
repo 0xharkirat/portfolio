@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:portfolio/constants/fonts.dart';
+import 'package:portfolio/constants/imgUrls.dart';
 import 'package:portfolio/constants/urls.dart';
 import 'package:portfolio/widgets/footer.dart';
 import 'package:transparent_image/transparent_image.dart';
@@ -111,7 +112,7 @@ class AboutPage extends StatelessWidget {
                         ),
                         child: FadeInImage.memoryNetwork(
                           placeholder: kTransparentImage,
-                          image: "assets/images/about.png",
+                          image: about,
                           fit: BoxFit.fitWidth,
                           alignment: Alignment.topCenter,
                         ),
