@@ -1,0 +1,18 @@
+2023/12/29-18:30:37.989 a603 Creating DB /private/var/folders/k9/xsgb3c795hq9gk3s2rsvlv6c0000gn/T/flutter_tools.CNOAsM/flutter_tools_chrome_device.wdLjRK/Default/IndexedDB/https_hushed-boat-f59.notion.site_0.indexeddb.leveldb since it was missing.
+2023/12/29-18:30:38.002 a603 Reusing MANIFEST /private/var/folders/k9/xsgb3c795hq9gk3s2rsvlv6c0000gn/T/flutter_tools.CNOAsM/flutter_tools_chrome_device.wdLjRK/Default/IndexedDB/https_hushed-boat-f59.notion.site_0.indexeddb.leveldb/MANIFEST-000001
+2023/12/29-18:30:39.140 a803 Level-0 table #5: started
+2023/12/29-18:30:39.145 a803 Level-0 table #5: 2668 bytes OK
+2023/12/29-18:30:39.158 a803 Delete type=0 #3
+2023/12/29-18:30:39.158 a803 Manual compaction at level-0 from '\x00\x01\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x02\x00\x00\x00' @ 0 : 0; will stop at (end)
+2023/12/29-19:00:08.058 a603 Level-0 table #7: started
+2023/12/29-19:00:08.062 a603 Level-0 table #7: 256 bytes OK
+2023/12/29-19:00:08.071 a603 Delete type=0 #4
+2023/12/29-19:00:08.071 a603 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2023/12/29-19:00:08.071 a603 Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x00\x00\x002\x02\x06\x01\x00\x00\x00\x00\x00\x00\x00\x00' @ 196 : 0
+2023/12/29-19:00:08.071 a603 Compacting 1@1 + 1@2 files
+2023/12/29-19:00:08.076 a603 Generated table #8@1: 56 keys, 1065 bytes
+2023/12/29-19:00:08.076 a603 Compacted 1@1 + 1@2 files => 1065 bytes
+2023/12/29-19:00:08.083 a603 compacted to: files[ 0 0 1 0 0 0 0 ]
+2023/12/29-19:00:08.086 a603 Delete type=2 #7
+2023/12/29-19:00:08.086 a603 Delete type=2 #5
+2023/12/29-19:00:08.086 a603 Manual compaction at level-1 from '\x00\x00\x00\x002\x02\x06\x01\x00\x00\x00\x00\x00\x00\x00\x00' @ 196 : 0 .. (end); will stop at (end)

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="/">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Portfolio of Harkirat Singh. A Developer.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Harkirat Singh">
+  <link rel="apple-touch-icon" href="download.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="download.png"/>
+
+  <title>Harkirat Singh</title>
+  <link rel="manifest" href="manifest.json">
+
+  <script>
+    // The value below is injected by flutter build, do not touch.
+    const serviceWorkerVersion = "329456521";
+  </script>
+  <!-- This script adds the flutter initialization JS code -->
+  <script src="flutter.js" defer></script>
+  
+    <!-- ... -->
+</head>
+</head>
+<body>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    canvas {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    main,
+    canvas {
+      display: block;
+    }
+
+    :root {
+      --pad: max(20px, 4vmin);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --c-bg: hsl(0, 0%, 5%);
+      }
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      background-color: var(--c-bg);
+    }
+
+    body.is-monospaced {
+      font-family: "Neue Montreal Mono";
+    }
+  </style>
+
+  <script>
+    window.addEventListener('load', function(ev) {
+      // Download main.dart.js
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        },
+        onEntrypointLoaded: function(engineInitializer) {
+          engineInitializer.initializeEngine().then(function(appRunner) {
+            appRunner.runApp();
+          });
+        }
+      });
+    });
+  </script>
+
+<div id="Page">
+  <div id="Background">
+    <canvas></canvas>
+  </div>
+
+  <main class="content" id="Content" data-scroll="area">
+    <div class="content_inner" data-scroll="target"></div>
+  </main>
+</div>
+
+
+<script src="main.js"></script>
+</body>
+</html>
