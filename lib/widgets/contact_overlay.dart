@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:portfolio/constants/fonts.dart';
 import 'package:portfolio/constants/urls.dart';
 import 'package:portfolio/model/contact_model.dart';
+import 'package:portfolio/widgets/chat_bubble.dart';
+import 'package:portfolio/widgets/option_button.dart';
 import 'package:transparent_image/transparent_image.dart';
 // ignore: avoid_web_libraries_in_flutter
 import 'dart:js' as js;
@@ -18,12 +21,18 @@ class ContactOverlayState extends State<ContactOverlay> {
   int option = 0;
 
   List<ChatMessage> chatHistory = [];
+  List<ChatBubble> animationPending = [];
+
+  bool firstAnimation = false;
 
   @override
   void initState() {
     super.initState();
     for (int i = 0; i < initialMessages.length; i++) {
-      chatHistory.add(ChatMessage(text: initialMessages[i], isBot: true));
+      chatHistory.add(ChatMessage(
+        text: initialMessages[i],
+        isBot: true,
+      ));
     }
   }
 
@@ -98,109 +107,138 @@ class ContactOverlayState extends State<ContactOverlay> {
                       bottomRight: Radius.circular(10),
                     ),
                   ),
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.all(8),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ...chatHistory.map((message) => Container(
-                          color: Colors.transparent,
-                          alignment: message.isBot? Alignment.centerLeft:Alignment.centerRight ,
-                          child: ChatBubble(
-                                message: message.text,
-                                isBot: message.isBot,
-                              ),
-                        )),
-                        if (option == 0) ...[
-                          for (int i = 0; i < options.length; i++)
+                  child: RawScrollbar(
+                    thumbColor: Colors.white54,
+                    radius: const Radius.circular(20),
+                    thickness: 5,
+                    child: SingleChildScrollView(
+                      padding: const EdgeInsets.all(8),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          ...chatHistory.map((message) => Container(
+                                color: Colors.transparent,
+                                alignment: message.isBot
+                                    ? Alignment.centerLeft
+                                    : Alignment.centerRight,
+                                child: ChatBubble(
+                                  message: message.text,
+                                  isBot: message.isBot,
+                                ),
+                              )),
+                          for (int i = 0; i < animationPending.length; i++)
+                            Container(
+                              color: Colors.transparent,
+                              alignment: animationPending[i].isBot
+                                  ? Alignment.centerLeft
+                                  : Alignment.centerRight,
+                              child: animationPending[i]
+                                  .animate(autoPlay: true)
+                                  .fadeIn(
+                                      delay: (0.2 + (i * 1)).seconds,
+                                      duration: .35.seconds)
+                                  .moveY(begin: 5),
+                            ),
+                          if (option == 0) ...[
+                            for (int i = 0; i < options.length; i++)
+                              OptionButton(
+                                text: options[i + 1].message,
+                                onPressed: () {
+                                  setState(() {
+                                    option = i + 1;
+                                    chatHistory.add(
+                                      ChatMessage(
+                                          text: options[i + 1].message,
+                                          isBot: false),
+                                    );
+                                    for (int j = 0;
+                                        j < options[i + 1].responses.length;
+                                        j++) {
+                                      animationPending.add(ChatBubble(
+                                          message: options[i + 1].responses[j],
+                                          isBot: true));
+                                    }
+                                  });
+                                  transferAnimatedToHistoryDelayed();
+                                },
+                              )
+                                  
+                          ],
+                          // Display chat bubbles based on selected option
+                          if (option == 2) ...[
                             OptionButton(
-                              text: options[i + 1].message,
+                              text: options[2].actions[0],
+                              onPressed: () {
+                                js.context.callMethod(
+                                    'open', ['mailto:0xharkirat@gmail.com']);
+                              },
+                            ).animate(autoPlay: true)
+                                  .fadeIn(delay: 4.seconds),
+                            OptionButton(
+                              text: options[2].actions[1],
                               onPressed: () {
                                 setState(() {
-                                  option = i + 1;
-                                  chatHistory.add(
-                                    ChatMessage(
-                                        text: options[i + 1].message,
-                                        isBot: false),
-                                  );
-                                  for (int j = 0;
-                                      j < options[i + 1].responses.length;
-                                      j++) {
-                                    chatHistory.add(ChatMessage(
-                                        text: options[i + 1].responses[j],
-                                        isBot: true));
-                                  }
+                                  option = 0;
                                 });
                               },
-                            ),
-                        ],
-                        // Display chat bubbles based on selected option
-                        if (option == 2) ...[
-                          OptionButton(
-                            text: options[2].actions[0],
-                            onPressed: () {
-                              js.context.callMethod(
-                                  'open', ['mailto:0xharkirat@gmail.com']);
-                            },
-                          ),
-                          OptionButton(
-                            text: options[2].actions[1],
-                            onPressed: () {
-                              setState(() {
-                                option = 0;
-                              });
-                            },
-                          )
-                          // Add more chat bubbles for Option 1 if needed
-                        ],
+                            ).animate(autoPlay: true)
+                                  .fadeIn(delay: 4.seconds),
+                            // Add more chat bubbles for Option 1 if needed
+                          ],
 
-                        if (option == 4) ...[
-                          OptionButton(
-                            text: options[4].actions[0],
-                            onPressed: () {
-                              js.context.callMethod('open',
-                                  ['https://flutter.dev/multi-platform/web']);
-                            },
-                          ),
-                          OptionButton(
-                            text: options[4].actions[1],
-                            onPressed: () {
-                              js.context.callMethod('open', [aboutUrl]);
-                            },
-                          ),
-                          OptionButton(
-                            text: options[4].actions[2],
-                            onPressed: () {
-                              setState(() {
-                                option = 0;
-                              });
-                            },
-                          )
-                        ],
-                        if (option != 2 && option != 0 && option != 4) ...[
-                          for (int i = 0; i < options.length; i++)
+                          if (option == 4) ...[
                             OptionButton(
-                              text: options[i + 1].message,
+                              text: options[4].actions[0],
+                              onPressed: () {
+                                js.context.callMethod('open',
+                                    ['https://flutter.dev/multi-platform/web']);
+                              },
+                            ).animate(autoPlay: true)
+                                  .fadeIn(delay: 4.seconds),
+                            OptionButton(
+                              text: options[4].actions[1],
+                              onPressed: () {
+                                js.context.callMethod('open', [aboutUrl]);
+                              },
+                            ).animate(autoPlay: true)
+                                  .fadeIn(delay: 4.seconds),
+                            OptionButton(
+                              text: options[4].actions[2],
                               onPressed: () {
                                 setState(() {
-                                  option = i + 1;
-                                  chatHistory.add(
-                                    ChatMessage(
-                                        text: options[i + 1].message,
-                                        isBot: false),
-                                  );
-                                  for (int j = 0;
-                                      j < options[i + 1].responses.length;
-                                      j++) {
-                                    chatHistory.add(ChatMessage(
-                                        text: options[i + 1].responses[j],
-                                        isBot: true));
-                                  }
+                                  option = 0;
                                 });
                               },
-                            ),
-                        ]
-                      ],
+                            ).animate(autoPlay: true)
+                                  .fadeIn(delay: 4.seconds),
+                          ],
+                          if (option != 2 && option != 0 && option != 4) ...[
+                            for (int i = 0; i < options.length; i++)
+                              OptionButton(
+                                text: options[i + 1].message,
+                                onPressed: () {
+                                  setState(() {
+                                    option = i + 1;
+                                    chatHistory.add(
+                                      ChatMessage(
+                                          text: options[i + 1].message,
+                                          isBot: false),
+                                    );
+                                    for (int j = 0;
+                                        j < options[i + 1].responses.length;
+                                        j++) {
+                                      animationPending.add(ChatBubble(
+                                          message: options[i + 1].responses[j],
+                                          isBot: true));
+                                    }
+                                  });
+                                  transferAnimatedToHistoryDelayed();
+                                },
+                              ).animate(autoPlay: true)
+                                  .fadeIn(delay: 4.seconds),
+                          ]
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -211,64 +249,18 @@ class ContactOverlayState extends State<ContactOverlay> {
       ),
     );
   }
-}
 
-class ChatBubble extends StatelessWidget {
-  final String message;
-  final bool isBot;
-
-  const ChatBubble({Key? key, required this.message, required this.isBot})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-     
-      margin: const EdgeInsets.symmetric(vertical: 5),
-      padding: const EdgeInsets.all(15),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: isBot ? Colors.white38: Colors.white60,
-      ),
-      child: Text(
-        message,
-        
-        style: bodyTextStyle.copyWith(
-          fontSize: 16,
-          
-        ),
-      ),
-    );
+  void transferAnimatedToHistory() {
+    for (int i = 0; i < animationPending.length; i++) {
+      chatHistory.add(ChatMessage(
+          text: animationPending[i].message, isBot: animationPending[i].isBot));
+    }
+    animationPending.clear();
   }
-}
 
-class OptionButton extends StatelessWidget {
-  final String text;
-  final VoidCallback onPressed;
-
-  const OptionButton({Key? key, required this.text, required this.onPressed})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 5),
-      padding: const EdgeInsets.all(15),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-          color: Colors.white
-        )
-      ),
-      
-     
-      child: InkWell(
-        
-        onTap: onPressed,
-        child: Text(text, style: bodyTextStyle.copyWith(
-          fontSize: 16,
-        ),),
-      ),
-    );
+  void transferAnimatedToHistoryDelayed() {
+    Future.delayed(Duration(seconds: 5), () {
+      transferAnimatedToHistory();
+    });
   }
 }

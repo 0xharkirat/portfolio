@@ -23,11 +23,12 @@ class MessageResponseWithAction extends MessageResponse {
 class ChatMessage {
   final String text;
   final bool isBot;
+  
 
-  ChatMessage({required this.text, required this.isBot});
+  ChatMessage({required this.text, required this.isBot,});
 }
 
-final Map<int,dynamic> options = {
+final Map<int, dynamic> options = {
   1: MessageResponse(
     message: "Just Saying Hello!",
     responses: [
