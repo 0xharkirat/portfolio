@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:portfolio/constants/fonts.dart';
+import 'package:portfolio/provider/contact_provider.dart';
 import 'package:portfolio/routes/routes.dart';
 import 'package:portfolio/widgets/nav_item.dart';
 
@@ -61,17 +63,24 @@ class _NavigationBarWebState extends State<NavigationBarWeb> {
   }
 
   Widget _contactNav(Size size) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      child: InkWell(
-        mouseCursor: SystemMouseCursors.click,
-        onTap: () {},
-        child: Text(
-          "Contact",
-          style: bodyTextStyle.copyWith(
-              fontSize: size.width > 600 ? 16 : (size.width / 600) * 20 * 0.7),
-        ),
-      ),
+    return Consumer(
+      builder: (BuildContext context, WidgetRef ref, Widget? child) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: InkWell(
+            mouseCursor: SystemMouseCursors.click,
+            onTap: () {
+              ref.read(contactProvider.notifier).toggleContact(context);
+            },
+            child: Text(
+              "Contact",
+              style: bodyTextStyle.copyWith(
+                  fontSize:
+                      size.width > 600 ? 16 : (size.width / 600) * 20 * 0.7),
+            ),
+          ),
+        );
+      },
     );
   }
 
