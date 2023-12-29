@@ -24,7 +24,7 @@ const reader =
     "https://firebasestorage.googleapis.com/v0/b/portfolio-a90a8.appspot.com/o/reader.png?alt=media";
 
 const liveDarbar =
-    "https://firebasestorage.googleapis.com/v0/b/portfolio-a90a8.appspot.com/o/live_darbar?alt=media";
+    "https://firebasestorage.googleapis.com/v0/b/portfolio-a90a8.appspot.com/o/live_darbar.png?alt=media";
 
 const pong =
     "https://firebasestorage.googleapis.com/v0/b/portfolio-a90a8.appspot.com/o/pong.gif?alt=media";

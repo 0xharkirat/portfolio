@@ -1,4 +1,4 @@
-import 'dart:convert';
+
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -9,7 +9,7 @@ import 'package:portfolio/constants/urls.dart';
 import 'package:portfolio/provider/contact_provider.dart';
 import 'package:portfolio/provider/weather.dart';
 import 'package:portfolio/widgets/footer_link.dart';
-import 'package:http/http.dart' as http;
+
 
 class Footer extends ConsumerWidget {
   const Footer({super.key});
