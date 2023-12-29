@@ -49,25 +49,9 @@ class ContactOverlayState extends State<ContactOverlay> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+
     
-    return Positioned(
-      bottom: 40,
-      right: 40,
-      child: Material(
-        clipBehavior: Clip.antiAlias,
-        color: Colors.transparent,
-        borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(10), topRight: Radius.circular(10)),
-        child: Container(
-          height: 600,
-          width: 350,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            border: Border.all(
-              color: Colors.white70,
-            ),
-          ),
-          child: Column(
+    Widget common = Column(
             children: [
               ListTile(
                 tileColor: Colors.white70,
@@ -274,10 +258,58 @@ class ContactOverlayState extends State<ContactOverlay> {
                 ),
               ),
             ],
+          );
+
+
+    
+    Widget content = Positioned(
+      bottom: 0,
+      top: 0,
+      right: 0,
+      left: 0,
+      child: Material(
+        clipBehavior: Clip.antiAlias,
+        color: Colors.transparent,
+        borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(
+              color: Colors.white70,
+            ),
           ),
+          child: common,
+        ),
+        
+      ),
+    );
+
+    if (size.width > 767){
+      content = Positioned(
+      bottom: 40,
+      right: 40,
+      child: Material(
+        clipBehavior: Clip.antiAlias,
+        color: Colors.transparent,
+        borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+        child: Container(
+          height: 600,
+          width: 350,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(
+              color: Colors.white70,
+            ),
+          ),
+          child: common
         ),
       ),
     );
+    }
+
+    return content;
   }
 
   void transferAnimatedToHistory() {
