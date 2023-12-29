@@ -5,10 +5,16 @@ const CACHE_NAME = 'flutter-app-cache';
 
 const RESOURCES = {"version.json": "009c9e65172e010890f7f65fde438006",
 "grain.webp": "d5caebff48006211e6345eab5da5ece6",
+<<<<<<< HEAD
 "index.html": "b1940095e09fe4c89b521b0dd4b7290c",
 "/": "b1940095e09fe4c89b521b0dd4b7290c",
 "download.png": "007d854b187152f852ec1b38953c0883",
 "main.dart.js": "1dd0bdff758c5a7e78d94a3efcc7a94d",
+=======
+"index.html": "4697a7ce6dc6d469954efba8cc61b448",
+"/": "4697a7ce6dc6d469954efba8cc61b448",
+"main.dart.js": "02307df5cb1edfaa99ade7ae5c7039ca",
+>>>>>>> b07e84972fc8b630d7158329421db9d1df7a6df2
 "blur.webp": "7c2c7c0c21226314c119b96425c82669",
 "flutter.js": "6fef97aeca90b426343ba6c5c9dc5d4a",
 "main.js": "f96d785bdcfeb43db00bbf5fdea8bd9d",
@@ -17,15 +23,24 @@ const RESOURCES = {"version.json": "009c9e65172e010890f7f65fde438006",
 "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "manifest.json": "d40c47d1c161f94dbcb13094d37f1f55",
+<<<<<<< HEAD
 "assets/AssetManifest.json": "0f4f3257b02fb58033c278b992970dd0",
 "assets/NOTICES": "ce47e56ed23da9679705c4e7c6952b85",
+=======
+"assets/AssetManifest.json": "0f292dcfa08824b2d272d679359ea944",
+"assets/NOTICES": "2f0f1ce4e3c5d04d38ac6fae1224db2e",
+>>>>>>> b07e84972fc8b630d7158329421db9d1df7a6df2
 "assets/FontManifest.json": "1730c29462f4e2f810778b092d6b9921",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "89ed8f4e49bcdfc0b5bfc9b24591e347",
 "assets/packages/font_awesome_flutter/lib/fonts/fa-solid-900.ttf": "219bf19c34e09048af47b080fcb5e4cc",
 "assets/packages/font_awesome_flutter/lib/fonts/fa-regular-400.ttf": "a5d7457fda15b7622c14f432ba63039a",
 "assets/packages/font_awesome_flutter/lib/fonts/fa-brands-400.ttf": "4a1d9b860deb19ef5a9df4a35575528c",
 "assets/shaders/ink_sparkle.frag": "f8b80e740d33eb157090be4e995febdf",
+<<<<<<< HEAD
 "assets/AssetManifest.bin": "a0b4c1971c12cd49261c56f8ffaeb568",
+=======
+"assets/AssetManifest.bin": "29c9c0dc4101a20263325aeaee1474c8",
+>>>>>>> b07e84972fc8b630d7158329421db9d1df7a6df2
 "assets/fonts/MaterialIcons-Regular.otf": "43683069fc3f6e6e52669017b5c7dbce",
 "assets/assets/images/pong.gif": "d73d0855e5f5bd6dd9311f0087015dc7",
 "assets/assets/images/live_darbar.png": "a88152e7d82cee01b091a85bb9233a8f",
