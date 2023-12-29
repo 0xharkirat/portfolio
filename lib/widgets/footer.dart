@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -5,14 +7,20 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/constants/fonts.dart';
 import 'package:portfolio/constants/urls.dart';
 import 'package:portfolio/provider/contact_provider.dart';
+import 'package:portfolio/provider/weather.dart';
 import 'package:portfolio/widgets/footer_link.dart';
+import 'package:http/http.dart' as http;
 
-class Footer extends StatelessWidget {
+class Footer extends ConsumerWidget {
   const Footer({super.key});
 
+ 
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final size = MediaQuery.of(context).size;
+    AsyncValue<double> weather = ref.watch(weatherProvider);
+
     return Container(
       height: size.width > 780 ? 380 : 550,
       width: double.infinity,
@@ -39,7 +47,7 @@ class Footer extends StatelessWidget {
                       color: Colors.black45,
                     ),
                     child: Text(
-                      "🇦🇺 Working Remotely from 20°C Sydney, Australia.",
+                      "🇦🇺 Working Remotely from ${weather.value ?? 21}°C Sydney, Australia.",
                       style: bodyTextStyle.copyWith(
                           fontSize: size.width > 600
                               ? 16
@@ -74,7 +82,7 @@ class Footer extends StatelessWidget {
                                 content: Container(
                                   padding: const EdgeInsets.all(20),
                                   width: 350,
-                                  height: 300,
+                                  height: 250,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                     border: Border.all(color: Colors.white38),
@@ -92,8 +100,7 @@ class Footer extends StatelessWidget {
                                               contentPadding: EdgeInsets.zero,
                                               iconColor: Colors.white,
                                               leading: const Icon(
-                                                Icons.flutter_dash,
-                                              ),
+                                                  Icons.flutter_dash),
                                               title: Text(
                                                 'Flutter for UI',
                                                 style: bodyTextStyle.copyWith(
@@ -104,31 +111,20 @@ class Footer extends StatelessWidget {
                                               contentPadding: EdgeInsets.zero,
                                               iconColor: Colors.white,
                                               leading: const Icon(
-                                                  FontAwesomeIcons.html5),
-                                              title: Text(
-                                                "HTML for background.",
-                                                style: bodyTextStyle.copyWith(
-                                                    fontSize: 14),
-                                              ),
-                                            ),
-                                            ListTile(
-                                              contentPadding: EdgeInsets.zero,
-                                              iconColor: Colors.white,
-                                              leading: const Icon(
-                                                  FontAwesomeIcons.css3),
-                                              title: Text(
-                                                "CSS for background styling.",
-                                                style: bodyTextStyle.copyWith(
-                                                    fontSize: 14),
-                                              ),
-                                            ),
-                                            ListTile(
-                                              contentPadding: EdgeInsets.zero,
-                                              iconColor: Colors.white,
-                                              leading: const Icon(
                                                   FontAwesomeIcons.js),
                                               title: Text(
-                                                "JS for background animation.",
+                                                "Three.js for background animation.",
+                                                style: bodyTextStyle.copyWith(
+                                                    fontSize: 14),
+                                              ),
+                                            ),
+                                            ListTile(
+                                              contentPadding: EdgeInsets.zero,
+                                              iconColor: Colors.white,
+                                              leading: const Icon(
+                                                  FontAwesomeIcons.fire),
+                                              title: Text(
+                                                "Firebase for hosting.",
                                                 style: bodyTextStyle.copyWith(
                                                     fontSize: 14),
                                               ),
