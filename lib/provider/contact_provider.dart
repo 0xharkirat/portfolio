@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:portfolio/widgets/contact_overlay.dart';
 
 final contactProvider = ChangeNotifierProvider<ContactNotifier>((ref) {
   return ContactNotifier();
@@ -13,7 +14,7 @@ class ContactNotifier extends ChangeNotifier {
   void toggleContact(BuildContext context) {
     if (_entry == null) {
       _entry = OverlayEntry(
-        builder: (context) => ContactOveraly(
+        builder: (context) => ContactOverlay(
           onClose: () {
             closeContact(context);
           },
@@ -36,19 +37,3 @@ class ContactNotifier extends ChangeNotifier {
   }
 }
 
-class ContactOveraly extends StatelessWidget {
-  const ContactOveraly({super.key, required this.onClose});
-  final VoidCallback onClose;
-
-  @override
-  Widget build(BuildContext context) {
-    return Positioned(
-      bottom: 40,
-      right: 40,
-      child: ElevatedButton(
-        onPressed: onClose,
-        child: const Text("close"),
-      ),
-    );
-  }
-}
