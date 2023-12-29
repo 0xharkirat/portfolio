@@ -43,6 +43,7 @@ final Map<int, dynamic> options = {
     responses: [
       "Ok, great!",
       "Exciting times 🕺",
+      "I'd love to collaborate",
       "Send me a message and lets chat further!",
     ],
     actions: [
