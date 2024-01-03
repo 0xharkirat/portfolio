@@ -30,7 +30,7 @@ class HomePageState extends State<HomePage> {
         thickness: 5,
         padding: const EdgeInsets.only(right: 4),
       child: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(vertical: size.height / 3),
+        padding: EdgeInsets.symmetric(vertical: size.height * 0.2),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.center,
