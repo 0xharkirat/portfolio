@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/constants/fonts.dart';
 import 'package:portfolio/routes/routes.dart';
 
 class NavItem extends StatelessWidget {
@@ -8,42 +7,35 @@ class NavItem extends StatelessWidget {
       required this.title,
       required this.routeName,
       required this.selected,
-      required this.onHighlight});
+      required this.onHighlight, required this.message});
 
-  final String title;
+  final IconData title;
   final String routeName;
+  final String message;
 
   final bool selected;
   final Function onHighlight;
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      child: GestureDetector(
-        onTap: () {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      decoration: BoxDecoration(
+        color: selected
+            ? Colors.white10
+            : Colors.transparent, // Set your desired background color
+        
+      ),
+      child: IconButton(
+        mouseCursor: SystemMouseCursors.click,
+        onPressed: () {
           navKey.currentState!.pushNamed(routeName);
-          onHighlight(routeName);
+      onHighlight(routeName);
+          
         },
-        child: Container(
-          padding: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            color: selected
-                ? Colors.white10
-                : Colors.transparent, // Set your desired background color
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Text(
-            title,
-            style: bodyTextStyle.copyWith(
-                fontSize: size.width > 600
-                    ? 16
-                    : (size.width / 600) *
-                        20 *
-                        0.7), // Adjust text color as needed
-          ),
-        ),
+        icon: Icon(title, color: Colors.white,),
+      
+         // Adjust text color as needed
       ),
     );
   }

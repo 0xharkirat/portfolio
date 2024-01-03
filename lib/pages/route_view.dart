@@ -10,14 +10,15 @@ class RouteView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 30),
+        padding: const EdgeInsets.all(29),
         child: Stack(
-          alignment: Alignment.topCenter,
+          alignment: Alignment.centerLeft,
+          
           clipBehavior: Clip.none,
           children: [
             child,
             const Positioned(
-              top: 30,
+              left: 0,
               child: NavigationBarWeb(),),
             
           ],

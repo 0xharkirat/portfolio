@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'package:portfolio/constants/fonts.dart';
+import 'package:portfolio/constants/colors.dart';
 import 'package:portfolio/provider/contact_provider.dart';
 import 'package:portfolio/routes/routes.dart';
 import 'package:portfolio/widgets/nav_item.dart';
@@ -20,41 +19,36 @@ class _NavigationBarWebState extends State<NavigationBarWeb> {
     final size = MediaQuery.of(context).size;
 
     return Container(
-      width: size.width > 767 ? 450 : size.width * 0.7,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5),
-        color: Colors.black12,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.3), // Shadow color
-            spreadRadius: 2, // How far the shadow should spread
-            blurRadius: 5, // How blurry the shadow should be
-            offset: const Offset(0, 2), // Offset of the shadow
-          ),
-        ],
-      ),
-      padding: const EdgeInsets.all(20),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        mainAxisSize: MainAxisSize.min,
+      decoration: const BoxDecoration(
+          color: kNewBackgroundcolor,
+          border: Border(
+              right: BorderSide(color: Color.fromARGB(127, 255, 255, 255)),
+              top: BorderSide(color: Color.fromARGB(127, 255, 255, 255)),
+              bottom: BorderSide(color: Color.fromARGB(127, 255, 255, 255)))),
+      padding: const EdgeInsets.symmetric(horizontal: 2),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           NavItem(
-            title: "Home",
+            title: Icons.home_outlined,
             routeName: routeHome,
             selected: index == 0,
             onHighlight: onHighlight,
+            message: 'Home',
           ),
           NavItem(
-            title: "About",
+            title: Icons.person_outline,
             routeName: routeAbout,
             selected: index == 1,
             onHighlight: onHighlight,
+            message: 'About',
           ),
           NavItem(
-            title: "Projects",
+            title: Icons.work_outline,
             routeName: routeProjects,
             selected: index == 2,
             onHighlight: onHighlight,
+            message: 'Projects',
           ),
           _contactNav(size)
         ],
@@ -66,18 +60,16 @@ class _NavigationBarWebState extends State<NavigationBarWeb> {
     return Consumer(
       builder: (BuildContext context, WidgetRef ref, Widget? child) {
         return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: InkWell(
+          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          child: IconButton(
             mouseCursor: SystemMouseCursors.click,
-            onTap: () {
+            icon: const Icon(
+              Icons.email_outlined,
+              color: Colors.white,
+            ),
+            onPressed: () {
               ref.read(contactProvider.notifier).toggleContact(context);
             },
-            child: Text(
-              "Contact",
-              style: bodyTextStyle.copyWith(
-                  fontSize:
-                      size.width > 600 ? 16 : (size.width / 600) * 20 * 0.7),
-            ),
           ),
         );
       },
