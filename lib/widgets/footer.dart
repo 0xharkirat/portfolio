@@ -22,7 +22,7 @@ class Footer extends ConsumerWidget {
     AsyncValue<double> weather = ref.watch(weatherProvider);
 
     return Container(
-      height: size.width > 780 ? 380 : 550,
+      height: size.height - 58,
       width: double.infinity,
       padding: EdgeInsets.only(
         left: size.width * 0.2,
