@@ -29,8 +29,7 @@ class HomePageState extends State<HomePage> {
       children: [
         ScrollTransformItem(
           builder: (double scrollOffset) {
-            double opacity = 0 + (scrollOffset / size.height);
-            opacity = opacity.clamp(0.0, 1.0); //
+            
 
             // Calculate scale based on scroll offset
             double scale = 0 + (scrollOffset / size.height);
@@ -42,15 +41,11 @@ class HomePageState extends State<HomePage> {
               scaleFinished = false;
             }
 
-            return AnimatedOpacity(
-              opacity: opacity,
-              duration: Duration.zero,
-              child: Transform.scale(
-                scale: scale,
-                child: AnimatedImage(
-                  size: size,
-                  onScaleFinished: scaleFinished,
-                ),
+            return Transform.scale(
+              scale: scale,
+              child: AnimatedImage(
+                size: size,
+                onScaleFinished: scaleFinished,
               ),
             );
           },
@@ -114,6 +109,18 @@ class HomePageState extends State<HomePage> {
                           .animate()
                           .fadeIn(delay: .9.seconds, duration: .35.seconds)
                           .slide(end: const Offset(0, .2)),
+                
+                      const SizedBox(
+                        height: 96,
+                      ),
+                
+                      AnimatedOpacity(
+                        opacity: scrollOffset >=10? 0:1,
+                        duration: const Duration(milliseconds: 500),
+                        child: Image.asset("images/scroll-hint.gif", height: 50, width: 50,).animate()
+                            .fadeIn(delay: 2.5.seconds, duration: .35.seconds)
+                            .slide(end: const Offset(0, .2)),
+                      ),
                     ]
                         .animate()
                         .shimmer(delay: 2.seconds, duration: 1800.ms, size: 4)

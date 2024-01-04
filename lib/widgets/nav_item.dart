@@ -27,6 +27,7 @@ class NavItem extends StatelessWidget {
         
       ),
       child: IconButton(
+        splashRadius: 1,
         mouseCursor: SystemMouseCursors.click,
         onPressed: () {
           navKey.currentState!.pushNamed(routeName);

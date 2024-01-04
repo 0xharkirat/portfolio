@@ -19,15 +19,14 @@ class _NavigationBarWebState extends State<NavigationBarWeb> {
     final size = MediaQuery.of(context).size;
 
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
           color: kNewBackgroundcolor,
-          border: Border(
-              right: BorderSide(color: Color.fromARGB(127, 255, 255, 255)),
-              top: BorderSide(color: Color.fromARGB(127, 255, 255, 255)),
-              bottom: BorderSide(color: Color.fromARGB(127, 255, 255, 255)))),
+          border: Border.all(
+               color: const Color.fromARGB(127, 255, 255, 255))),
       padding: const EdgeInsets.symmetric(horizontal: 2),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        
         children: [
           NavItem(
             title: Icons.home_outlined,
@@ -62,6 +61,7 @@ class _NavigationBarWebState extends State<NavigationBarWeb> {
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0),
           child: IconButton(
+            splashRadius: 1,
             mouseCursor: SystemMouseCursors.click,
             icon: const Icon(
               Icons.email_outlined,
