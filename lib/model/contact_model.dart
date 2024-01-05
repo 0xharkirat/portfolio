@@ -55,8 +55,8 @@ final Map<int, dynamic> options = {
     message: "Current Tech Stack",
     responses: [
       "Curious! 🕵️",
-      "Current: Flutter/Dart, Firebase, Node.Js, Python",
-      "Also worked with Java, SQL, HTML, CSS, JavaScript, React.js, Next.js, Solidity, MongoDB & Blockchain",
+      "Current: Flutter/Dart, Firebase, JavaScript, Python, C++",
+      "Also worked with Java, SQL, HTML, CSS, React.js, Next.js, Solidity, MongoDB & Blockchain",
       "Can I help you with anything else?",
     ],
   ),

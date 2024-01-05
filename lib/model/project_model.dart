@@ -43,7 +43,7 @@ List<Project> projectData = [
   Project(
       title: "NFT Images Generator",
       subtitle:
-          "Generate unique NFT images and their metadata from different trait pngs.",
+          "Generate unique NFT images and their metadata from different traits pngs.",
       imgPath: nft,
       linkUrl: "https://hushed-boat-f59.notion.site/NFT-Image-Generation-0f971d2c38904e35a3f9bda4715ab81c"),
   Project(

@@ -23,7 +23,7 @@ dependencies:
   http: ^1.1.0
   url_strategy: ^0.2.0
   responsive_builder: ^0.7.0
-  animated_text_kit: ^4.2.2
+  
   
   
   
@@ -48,8 +48,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  assets:
-    - assets/images/
+  # assets:
+  #   - assets/images/
     
     
   
