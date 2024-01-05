@@ -69,11 +69,13 @@ class HomePageState extends State<HomePage> {
             return AnimatedOpacity(
               opacity: opacity,
               duration: Duration.zero,
-              child: SizedBox(
+              child: Container(
                 height: size.height - 58,
+
                 width: double.infinity,
+                padding: EdgeInsets.only(top: (size.height / 3) - 31),
                 child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
                         "Hi. I'm Harkirat.",
@@ -117,7 +119,7 @@ class HomePageState extends State<HomePage> {
                       AnimatedOpacity(
                         opacity: scrollOffset >=10? 0:1,
                         duration: const Duration(milliseconds: 500),
-                        child: Image.network(scrollGif, height: 50, width: 50,).animate()
+                        child: Image.network(scrollGif, height: 30, width: 30,).animate()
                             .fadeIn(delay: 2.5.seconds, duration: .35.seconds)
                             .slide(end: const Offset(0, .2)),
                       ),

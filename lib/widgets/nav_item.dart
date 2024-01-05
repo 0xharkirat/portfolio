@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/constants/colors.dart';
 import 'package:portfolio/routes/routes.dart';
 
 class NavItem extends StatelessWidget {
@@ -32,9 +33,9 @@ class NavItem extends StatelessWidget {
         onPressed: () {
           navKey.currentState!.pushNamed(routeName);
       onHighlight(routeName);
-          
+        
         },
-        icon: Icon(title, color: Colors.white,),
+        icon: Icon(title, color: kTextColor,),
       
          // Adjust text color as needed
       ),

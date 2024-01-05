@@ -21,11 +21,11 @@ class StaggeredGridLayout extends StatelessWidget {
       crossAxisCount = 2;
     }
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
       child: StaggeredGrid.count(
           crossAxisCount: crossAxisCount,
-          crossAxisSpacing: 25,
-          mainAxisSpacing: 25,
+          crossAxisSpacing: 30,
+          mainAxisSpacing: 30,
           children: gridItems(size.width)),
     );
   }
@@ -41,6 +41,7 @@ class StaggeredGridLayout extends StatelessWidget {
               title: projectData[i].title,
               subtitle: projectData[i].subtitle,
               imgPath: projectData[i].imgPath,
+              linkUrl: projectData[i].linkUrl,
             )
                 .animate()
                 .fadeIn(delay: (0.9 + (i * 0.2)).seconds, duration: .35.seconds)
@@ -52,6 +53,7 @@ class StaggeredGridLayout extends StatelessWidget {
               title: projectData[i].title,
               subtitle: projectData[i].subtitle,
               imgPath: projectData[i].imgPath,
+              linkUrl: projectData[i].linkUrl,
             )
                 .animate()
                 .fadeIn(delay: (0.9 + (i * 0.2)).seconds, duration: .35.seconds)
@@ -66,6 +68,7 @@ class StaggeredGridLayout extends StatelessWidget {
                 title: projectData[6].title,
                 subtitle: projectData[6].subtitle,
                 imgPath: projectData[6].imgPath,
+                linkUrl: projectData[6].linkUrl,
               )
                   .animate()
                   .fadeIn(
@@ -77,7 +80,7 @@ class StaggeredGridLayout extends StatelessWidget {
               SmallerContainer(
                 title: projectData[5].title,
                 subtitle: projectData[5].subtitle,
-                imgPath: projectData[5].imgPath,
+                imgPath: projectData[5].imgPath, linkUrl: projectData[5].linkUrl,
               )
                   .animate()
                   .fadeIn(
@@ -89,7 +92,7 @@ class StaggeredGridLayout extends StatelessWidget {
               LargerContainer(
                 title: projectData[i].title,
                 subtitle: projectData[i].subtitle,
-                imgPath: projectData[i].imgPath,
+                imgPath: projectData[i].imgPath, linkUrl: projectData[i].linkUrl,
               )
                   .animate()
                   .fadeIn(
@@ -103,6 +106,7 @@ class StaggeredGridLayout extends StatelessWidget {
               title: projectData[i].title,
               subtitle: projectData[i].subtitle,
               imgPath: projectData[i].imgPath,
+              linkUrl: projectData[i].linkUrl
             )
                 .animate()
                 .fadeIn(delay: (0.9 + (i * 0.2)).seconds, duration: .35.seconds)

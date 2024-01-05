@@ -18,7 +18,7 @@ const game =
     "https://firebasestorage.googleapis.com/v0/b/portfolio-a90a8.appspot.com/o/game.png?alt=media";
 
 const nft =
-    "https://firebasestorage.googleapis.com/v0/b/portfolio-a90a8.appspot.com/o/game.png?alt=media";
+    "https://firebasestorage.googleapis.com/v0/b/portfolio-a90a8.appspot.com/o/nft.png?alt=media";
 
 const reader =
     "https://firebasestorage.googleapis.com/v0/b/portfolio-a90a8.appspot.com/o/reader.png?alt=media";

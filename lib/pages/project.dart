@@ -19,7 +19,7 @@ class ProjectPage extends StatelessWidget {
         thickness: 5,
         padding: const EdgeInsets.only(right: 4),
         child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(vertical: size.height / 3),
+          padding: EdgeInsets.only(top: size.height / 3),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -40,7 +40,7 @@ class ProjectPage extends StatelessWidget {
               SizedBox(
                 width: size.width / 2,
                 child: Text(
-                  "A collection of apps, websites, packages and tools that I've created to be helpful, fun & sometimes just to show off.",
+                  "A collection of apps, websites, packages and tools that I've created to learn, be helpful, fun & sometimes just to show off.",
                   style: subTitleStyle.copyWith(
                       fontSize:
                           size.width > 600 ? 20 : (size.width / 600) * 40 * 0.7),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:portfolio/constants/colors.dart';
 import 'package:portfolio/constants/fonts.dart';
 import 'package:portfolio/constants/urls.dart';
 import 'package:portfolio/provider/contact_provider.dart';
@@ -99,7 +100,7 @@ class Footer extends ConsumerWidget {
                                             children: [
                                               ListTile(
                                                 contentPadding: EdgeInsets.zero,
-                                                iconColor: Colors.white,
+                                                iconColor: kTextColor,
                                                 leading: const Icon(
                                                     Icons.flutter_dash),
                                                 title: Text(
@@ -110,7 +111,7 @@ class Footer extends ConsumerWidget {
                                               ),
                                               ListTile(
                                                 contentPadding: EdgeInsets.zero,
-                                                iconColor: Colors.white,
+                                                iconColor: kTextColor,
                                                 leading: const Icon(
                                                     FontAwesomeIcons.js),
                                                 title: Text(
@@ -121,7 +122,7 @@ class Footer extends ConsumerWidget {
                                               ),
                                               ListTile(
                                                 contentPadding: EdgeInsets.zero,
-                                                iconColor: Colors.white,
+                                                iconColor: kTextColor,
                                                 leading: const Icon(
                                                     FontAwesomeIcons.fire),
                                                 title: Text(
@@ -132,7 +133,7 @@ class Footer extends ConsumerWidget {
                                               ),
                                               ListTile(
                                                 contentPadding: EdgeInsets.zero,
-                                                iconColor: Colors.white,
+                                                iconColor: kTextColor,
                                                 leading: const Icon(
                                                     FontAwesomeIcons.github),
                                                 title: Text(

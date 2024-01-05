@@ -19,14 +19,17 @@ class _NavigationBarWebState extends State<NavigationBarWeb> {
     final size = MediaQuery.of(context).size;
 
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           color: kNewBackgroundcolor,
-          border: Border.all(
-               color: const Color.fromARGB(127, 255, 255, 255))),
+          border: Border(
+              top: BorderSide(color: Color.fromARGB(127, 255, 255, 255)),
+              right:
+                  BorderSide(color: Color.fromARGB(127, 255, 255, 255)),
+              bottom:
+                  BorderSide(color: Color.fromARGB(127, 255, 255, 255)))),
       padding: const EdgeInsets.symmetric(horizontal: 2),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        
         children: [
           NavItem(
             title: Icons.home_outlined,
@@ -65,7 +68,7 @@ class _NavigationBarWebState extends State<NavigationBarWeb> {
             mouseCursor: SystemMouseCursors.click,
             icon: const Icon(
               Icons.email_outlined,
-              color: Colors.white,
+              color: kTextColor,
             ),
             onPressed: () {
               ref.read(contactProvider.notifier).toggleContact(context);

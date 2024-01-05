@@ -35,7 +35,7 @@ TextStyle bodyTextStyle = const TextStyle(
 
 TextStyle descriptionTextStyle = const TextStyle(
   fontSize: 18,
-  color: Colors.white,
+  color: kTextColor,
   fontFamily: kGtFonts,
 );
 

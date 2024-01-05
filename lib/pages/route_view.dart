@@ -10,7 +10,7 @@ class RouteView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Padding(
-        padding: const EdgeInsets.all(29),
+        padding: const EdgeInsets.all(31),
         child: Stack(
           alignment: Alignment.centerLeft,
           
