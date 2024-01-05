@@ -5,7 +5,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio/constants/colors.dart';
 import 'package:portfolio/constants/fonts.dart';
 import 'package:portfolio/constants/imgUrls.dart';
-import 'package:portfolio/constants/urls.dart';
 import 'package:portfolio/model/contact_model.dart';
 import 'package:portfolio/provider/chat_provider.dart';
 import 'package:portfolio/widgets/chat_bubble.dart';
@@ -191,7 +190,7 @@ class _ContactOverlayState extends ConsumerState<ContactOverlay> {
                             js.context.callMethod(
                                 'open', ['mailto:info.sandhukirat23@gmail.com']);
                           },
-                        ).animate(autoPlay: true).fadeIn(delay: 4.seconds),
+                        ).animate(autoPlay: true).fadeIn(delay: 4.2.seconds),
                         OptionButton(
                           text: options[2].actions[1],
                           onPressed: () {
@@ -200,7 +199,7 @@ class _ContactOverlayState extends ConsumerState<ContactOverlay> {
                               scrollToBottom();
                             });
                           },
-                        ).animate(autoPlay: true).fadeIn(delay: 4.seconds),
+                        ).animate(autoPlay: true).fadeIn(delay: 4.2.seconds),
                         // Add more chat bubbles for Option 1 if needed
                       ],
 
@@ -211,7 +210,7 @@ class _ContactOverlayState extends ConsumerState<ContactOverlay> {
                             js.context.callMethod('open',
                                 ['https://flutter.dev/multi-platform/web']);
                           },
-                        ).animate(autoPlay: true).fadeIn(delay: 5.seconds),
+                        ).animate(autoPlay: true).fadeIn(delay: 4.2.seconds),
                         OptionButton(
                           text: options[4].actions[2],
                           onPressed: () {
@@ -220,7 +219,7 @@ class _ContactOverlayState extends ConsumerState<ContactOverlay> {
                             });
                             scrollToBottom();
                           },
-                        ).animate(autoPlay: true).fadeIn(delay: 5.seconds),
+                        ).animate(autoPlay: true).fadeIn(delay: 4.2.seconds),
                       ],
                       if (option != 2 && option != 0 && option != 4) ...[
                         for (int i = 0; i < options.length; i++)
