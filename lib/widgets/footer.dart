@@ -44,9 +44,9 @@ class Footer extends ConsumerWidget {
                     Container(
                       width: double.infinity,
                       padding: const EdgeInsets.all(30),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(100),
-                        color: Colors.black45,
+                      decoration: const BoxDecoration(
+                        
+                        color: kNewBackgroundcolor,
                       ),
                       child: Text(
                         "🇦🇺 Working Remotely from ${weather.value ?? 21}°C Sydney, Australia.",
