@@ -9,9 +9,16 @@ import 'package:portfolio/widgets/footer.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'dart:js' as js;
 
-class AboutPage extends StatelessWidget {
+class AboutPage extends StatefulWidget {
   const AboutPage({Key? key}) : super(key: key);
 
+  @override
+  State<AboutPage> createState() => _AboutPageState();
+}
+
+class _AboutPageState extends State<AboutPage> {
+  bool isHover = false;
+  Offset mousePos = const Offset(0, 0);
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -24,12 +31,14 @@ class AboutPage extends StatelessWidget {
         thickness: 5,
         padding: const EdgeInsets.only(right: 4),
         child: SingleChildScrollView(
-          padding: EdgeInsets.only(bottom: 31, top: (size.height / 5) - 31 ),
+          padding: EdgeInsets.only(bottom: 31, top: (size.height / 5) - 31),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 116,),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 116,
+                ),
                 child: Column(
                   children: [
                     SizedBox(
@@ -38,8 +47,9 @@ class AboutPage extends StatelessWidget {
                     Text(
                       "Harkirat Singh.",
                       style: headlineStyle.copyWith(
-                          fontSize:
-                              size.width > 600 ? 96 : (size.width / 600) * 96 * 0.7),
+                          fontSize: size.width > 600
+                              ? 96
+                              : (size.width / 600) * 96 * 0.7),
                       textAlign: TextAlign.center,
                     )
                         .animate()
@@ -54,41 +64,72 @@ class AboutPage extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
-                              InkWell(
-                                onTap: () {
-                                  js.context.callMethod('open', [aboutUrl]);
+                              MouseRegion(
+                                onEnter: (event) {
+                                  setState(() {
+                                    isHover = true;
+                                  });
                                 },
-                                child: ClipRRect(
-                                  borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(200),
-                                      topRight: Radius.circular(200)),
-                                  child: FadeInImage.memoryNetwork(
-                                    placeholder: kTransparentImage,
-                                    image: harkStand,
-                                    height: 400,
-                                    fit: BoxFit.cover,
-                                    alignment: Alignment.topCenter,
-                                  ),
-                                ),
-                              )
-                                  .animate()
-                                  .fadeIn(delay: 1.1.seconds, duration: .35.seconds)
-                                  .moveY(),
+                                onHover: (event) {
+                                  setState(() {
+                                    mousePos += event.delta;
+                                    mousePos += const Offset(0.12, 0.12);
+                                  });
+                                },
+                                onExit: (event) {
+                                  setState(() {
+                                    isHover = false;
+                                  });
+                                },
+                                child: InkWell(
+                                  onTap: () {
+                                    js.context.callMethod('open', [aboutUrl]);
+                                  },
+                                  child: ClipRRect(
+                                      borderRadius: const BorderRadius.only(
+                                          topLeft: Radius.circular(200),
+                                          topRight: Radius.circular(200)),
+                                      child: AnimatedScale(
+                                        scale: isHover ? 1.5 : 1,
+                                        duration:
+                                            const Duration(milliseconds: 500),
+                                        curve: Curves.easeOutCubic,
+                                        child: FadeInImage.memoryNetwork(
+                                          placeholder: kTransparentImage,
+                                          image: harkStand,
+                                          height: 400,
+                                          fit: BoxFit.cover,
+                                          alignment: Alignment.topCenter,
+                                        ),
+                                      )
+                                          .animate(target: isHover ? 0.1: 0)
+                                          .move(end: mousePos, duration: 1.seconds, curve: Curves.easeOutCubic)),
+                                )
+                                    .animate()
+                                    .fadeIn(
+                                        delay: 1.1.seconds,
+                                        duration: .35.seconds)
+                                    .moveY(),
+                              ),
                               InkWell(
                                 onTap: () {
-                                  js.context.callMethod('open', ["https://youtu.be/l0Jzm5sHb6U?si=5YEwpAce2VSvWF1J"]);
+                                  js.context.callMethod('open', [
+                                    "https://youtu.be/l0Jzm5sHb6U?si=5YEwpAce2VSvWF1J"
+                                  ]);
                                 },
                                 child: Container(
-                                  color: Colors.black54,
+                                  color: const Color.fromARGB(255, 18, 18, 18),
                                   height: 100,
-                                  padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 20, horizontal: 10),
                                   child: Center(
-                                    child: Text("\"Men are here. We Make Fire. Cook Meat.\"", style: bodyTextStyle.copyWith(
-                                      fontSize: 24
+                                    child: Text(
+                                      "\"Men are here. We Make Fire. Cook Meat.\"",
+                                      style:
+                                          bodyTextStyle.copyWith(fontSize: 24),
+                                      textAlign: TextAlign.center,
                                     ),
-                                    textAlign: TextAlign.center,),
                                   ),
-                                  
                                 ),
                               )
                             ],
@@ -111,7 +152,8 @@ class AboutPage extends StatelessWidget {
                                     color: Colors.white60),
                               )
                                   .animate()
-                                  .fadeIn(delay: .7.seconds, duration: .35.seconds)
+                                  .fadeIn(
+                                      delay: .7.seconds, duration: .35.seconds)
                                   .moveY(),
                               const SizedBox(
                                 height: 16,
@@ -119,7 +161,8 @@ class AboutPage extends StatelessWidget {
                               Text(
                                 "Computers are my childhood's best friends.\n\nWhen I was young, my dad and I shared the same passion for computers. We were both always excited about new processors and the evolving Windows operating systems—from 98 to XP, Vista to 7. He was also my first computer teacher, introducing me to Word, Excel, Paint, PowerPoint, downloading, and other cool stuff.\n\nI still remember the day when he first showed me Excel and its incredible formula function feature; it just blew my mind. Spending time with Dad and learning about computers from him was one of the best experiences of my life. It marked the earliest form of collaboration in my life, and I learned so much more effectively.",
                                 style: bodyTextStyle.copyWith(
-                                  color: const Color.fromARGB(230, 255, 255, 255),
+                                  color:
+                                      const Color.fromARGB(230, 255, 255, 255),
                                   height: 1.5,
                                   fontSize: size.width > 600
                                       ? 20
@@ -127,7 +170,8 @@ class AboutPage extends StatelessWidget {
                                 ),
                               )
                                   .animate()
-                                  .fadeIn(delay: .9.seconds, duration: .35.seconds)
+                                  .fadeIn(
+                                      delay: .9.seconds, duration: .35.seconds)
                                   .moveY(),
                               const SizedBox(
                                 height: 16,
@@ -139,7 +183,7 @@ class AboutPage extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(20),
                                     border: Border.all(color: Colors.white)),
                                 child: InkWell(
-                                  onTap: (){
+                                  onTap: () {
                                     js.context.callMethod('open', [aboutUrl]);
                                   },
                                   child: Text(
@@ -149,8 +193,10 @@ class AboutPage extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                              ).animate()
-                                  .fadeIn(delay: 1.1.seconds, duration: .35.seconds)
+                              )
+                                  .animate()
+                                  .fadeIn(
+                                      delay: 1.1.seconds, duration: .35.seconds)
                                   .moveY(),
                             ],
                           ),
