@@ -120,12 +120,12 @@ class HomePageState extends State<HomePage> {
                         opacity: scrollOffset >=10? 0:1,
                         duration: const Duration(milliseconds: 500),
                         child: Image.network(scrollGif, height: 30, width: 30,).animate()
-                            .fadeIn(delay: 2.5.seconds, duration: .35.seconds)
+                            .fadeIn(delay: 1.1.seconds, duration: .35.seconds)
                             .slide(end: const Offset(0, .2)),
                       ),
                     ]
                         .animate()
-                        .shimmer(delay: 2.seconds, duration: 1800.ms, size: 4)
+                        .shimmer(delay: 1.1.seconds, duration: 1800.ms, size: 4)
                         .scaleXY(end: 1.02, duration: 600.ms)
                         .then(delay: 600.ms)
                         .scaleXY(end: 1 / 1.02)),

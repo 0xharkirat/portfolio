@@ -203,7 +203,6 @@ class _AboutPageState extends State<AboutPage> {
                                 height: 16,
                               ),
                               MouseRegion(
-                                
                                 onEnter: (event) {
                                   setState(() {
                                     isButtonHover = true;
@@ -223,9 +222,8 @@ class _AboutPageState extends State<AboutPage> {
                                 },
                                 child: InkWell(
                                   onTap: () {
-                                      js.context
-                                          .callMethod('open', [aboutUrl]);
-                                    },
+                                    js.context.callMethod('open', [aboutUrl]);
+                                  },
                                   child: AnimatedContainer(
                                     duration: const Duration(milliseconds: 500),
                                     curve: Curves.easeOutCubic,
@@ -243,18 +241,18 @@ class _AboutPageState extends State<AboutPage> {
                                                 ? kNewBackgroundcolor
                                                 : kTextColor)),
                                     child: Text(
-                                        "My Brief life Story ↗",
-                                        style: bodyTextStyle.copyWith(
-                                            fontSize: 16,
-                                            color: isButtonHover
-                                                ? kNewBackgroundcolor
-                                                : kTextColor),
-                                      )
-                                          .animate(
-                                              target: isButtonHover ? 0.1 : 0)
-                                          .move(
-                                            end: buttonMousePos,
-                                          ),
+                                      "My Brief life Story ↗",
+                                      style: bodyTextStyle.copyWith(
+                                          fontSize: 16,
+                                          color: isButtonHover
+                                              ? kNewBackgroundcolor
+                                              : kTextColor),
+                                    )
+                                        .animate(
+                                            target: isButtonHover ? 0.1 : 0)
+                                        .move(
+                                          end: buttonMousePos,
+                                        ),
                                   ),
                                 )
                                     .animate()
