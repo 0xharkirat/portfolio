@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:portfolio/constants/colors.dart';
 import 'package:portfolio/constants/fonts.dart';
 import 'package:portfolio/constants/imgUrls.dart';
 import 'package:portfolio/constants/urls.dart';
@@ -67,7 +68,7 @@ class _ContactOverlayState extends ConsumerState<ContactOverlay> {
     Widget common = Column(
       children: [
         ListTile(
-          tileColor: Colors.white70,
+          tileColor: const Color.fromARGB(255, 64, 64, 64),
           contentPadding: const EdgeInsets.all(10),
           leading: Container(
             decoration: BoxDecoration(
@@ -83,14 +84,14 @@ class _ContactOverlayState extends ConsumerState<ContactOverlay> {
             "Hark Bot",
             style: subTitleStyle.copyWith(
               fontWeight: FontWeight.bold,
-              color: Colors.black87,
+              color: kTextColor,
               fontSize: 16,
             ),
           ),
           subtitle: Text(
             "Ask me a question",
             style: subTitleStyle.copyWith(
-              color: Colors.black,
+              color: Colors.white70,
               fontSize: 14,
               fontWeight: FontWeight.bold,
             ),
@@ -98,7 +99,7 @@ class _ContactOverlayState extends ConsumerState<ContactOverlay> {
           trailing: IconButton(
             icon: const Icon(
               Icons.close,
-              color: Colors.black,
+              color: kTextColor,
               size: 24,
             ),
             onPressed: () {
@@ -111,7 +112,7 @@ class _ContactOverlayState extends ConsumerState<ContactOverlay> {
           child: Container(
             clipBehavior: Clip.antiAlias,
             decoration: const BoxDecoration(
-              color: Colors.black87,
+              color: Color.fromARGB(255, 18, 18, 18),
               backgroundBlendMode: BlendMode.darken,
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(10),
@@ -188,7 +189,7 @@ class _ContactOverlayState extends ConsumerState<ContactOverlay> {
                           text: options[2].actions[0],
                           onPressed: () {
                             js.context.callMethod(
-                                'open', ['mailto:0xharkirat@gmail.com']);
+                                'open', ['mailto:info.sandhukirat23@gmail.com']);
                           },
                         ).animate(autoPlay: true).fadeIn(delay: 4.seconds),
                         OptionButton(
@@ -210,13 +211,7 @@ class _ContactOverlayState extends ConsumerState<ContactOverlay> {
                             js.context.callMethod('open',
                                 ['https://flutter.dev/multi-platform/web']);
                           },
-                        ).animate(autoPlay: true).fadeIn(delay: 4.seconds),
-                        OptionButton(
-                          text: options[4].actions[1],
-                          onPressed: () {
-                            js.context.callMethod('open', [aboutUrl]);
-                          },
-                        ).animate(autoPlay: true).fadeIn(delay: 4.seconds),
+                        ).animate(autoPlay: true).fadeIn(delay: 5.seconds),
                         OptionButton(
                           text: options[4].actions[2],
                           onPressed: () {
@@ -225,7 +220,7 @@ class _ContactOverlayState extends ConsumerState<ContactOverlay> {
                             });
                             scrollToBottom();
                           },
-                        ).animate(autoPlay: true).fadeIn(delay: 4.seconds),
+                        ).animate(autoPlay: true).fadeIn(delay: 5.seconds),
                       ],
                       if (option != 2 && option != 0 && option != 4) ...[
                         for (int i = 0; i < options.length; i++)
@@ -305,6 +300,14 @@ class _ContactOverlayState extends ConsumerState<ContactOverlay> {
         ),
       );
     }
+
+    if (option == 0){
+      WidgetsBinding.instance
+        .addPostFrameCallback((_) => scrollToBottom());
+
+    }
+
+    
 
     return content;
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:portfolio/constants/colors.dart';
 import 'package:portfolio/constants/fonts.dart';
 
 class ChatBubble extends StatelessWidget {
@@ -24,6 +25,7 @@ class ChatBubble extends StatelessWidget {
         
         style: bodyTextStyle.copyWith(
           fontSize: 16,
+          color: isBot? kTextColor: const Color.fromARGB(255, 18, 18, 18)
           
         ),
       ),
