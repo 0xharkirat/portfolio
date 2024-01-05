@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:portfolio/constants/colors.dart';
 import 'package:portfolio/constants/fonts.dart';
 import 'package:portfolio/constants/imgUrls.dart';
 import 'package:portfolio/constants/urls.dart';
@@ -17,8 +18,14 @@ class AboutPage extends StatefulWidget {
 }
 
 class _AboutPageState extends State<AboutPage> {
-  bool isHover = false;
-  Offset mousePos = const Offset(0, 0);
+  bool isImageHover = false;
+  Offset imageMousePos = const Offset(0, 0);
+
+  bool isCaptionHover = false;
+
+  bool isButtonHover = false;
+  Offset buttonMousePos = const Offset(0, 0);
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -65,69 +72,88 @@ class _AboutPageState extends State<AboutPage> {
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
                               MouseRegion(
+                                  onEnter: (event) {
+                                    setState(() {
+                                      isImageHover = true;
+                                    });
+                                  },
+                                  onHover: (event) {
+                                    setState(() {
+                                      imageMousePos += event.delta;
+                                      imageMousePos += const Offset(0.12, 0.12);
+                                    });
+                                  },
+                                  onExit: (event) {
+                                    setState(() {
+                                      isImageHover = false;
+                                      imageMousePos = const Offset(0, 0);
+                                    });
+                                  },
+                                  child: InkWell(
+                                    onTap: () {
+                                      js.context.callMethod('open', [aboutUrl]);
+                                    },
+                                    child: ClipRRect(
+                                        borderRadius: const BorderRadius.only(
+                                            topLeft: Radius.circular(200),
+                                            topRight: Radius.circular(200)),
+                                        child: AnimatedScale(
+                                          scale: isImageHover ? 1.5 : 1,
+                                          duration:
+                                              const Duration(milliseconds: 500),
+                                          curve: Curves.easeOutCubic,
+                                          child: FadeInImage.memoryNetwork(
+                                            placeholder: kTransparentImage,
+                                            image: harkStand,
+                                            height: 400,
+                                            fit: BoxFit.cover,
+                                            alignment: Alignment.topCenter,
+                                          ),
+                                        )
+                                            .animate(
+                                                target: isImageHover ? 0.1 : 0)
+                                            .move(
+                                                end: imageMousePos,
+                                                duration: 1.seconds,
+                                                curve: Curves.easeOutCubic)),
+                                  )),
+                              MouseRegion(
                                 onEnter: (event) {
                                   setState(() {
-                                    isHover = true;
+                                    isCaptionHover = true;
                                   });
                                 },
-                                onHover: (event) {
-                                  setState(() {
-                                    mousePos += event.delta;
-                                    mousePos += const Offset(0.12, 0.12);
-                                  });
-                                },
+                                onHover: (event) {},
                                 onExit: (event) {
                                   setState(() {
-                                    isHover = false;
+                                    isCaptionHover = false;
                                   });
                                 },
                                 child: InkWell(
                                   onTap: () {
-                                    js.context.callMethod('open', [aboutUrl]);
+                                    js.context.callMethod('open', [
+                                      "https://youtu.be/l0Jzm5sHb6U?si=5YEwpAce2VSvWF1J"
+                                    ]);
                                   },
-                                  child: ClipRRect(
-                                      borderRadius: const BorderRadius.only(
-                                          topLeft: Radius.circular(200),
-                                          topRight: Radius.circular(200)),
-                                      child: AnimatedScale(
-                                        scale: isHover ? 1.5 : 1,
-                                        duration:
-                                            const Duration(milliseconds: 500),
-                                        curve: Curves.easeOutCubic,
-                                        child: FadeInImage.memoryNetwork(
-                                          placeholder: kTransparentImage,
-                                          image: harkStand,
-                                          height: 400,
-                                          fit: BoxFit.cover,
-                                          alignment: Alignment.topCenter,
-                                        ),
-                                      )
-                                          .animate(target: isHover ? 0.1: 0)
-                                          .move(end: mousePos, duration: 1.seconds, curve: Curves.easeOutCubic)),
-                                )
-                                    .animate()
-                                    .fadeIn(
-                                        delay: 1.1.seconds,
-                                        duration: .35.seconds)
-                                    .moveY(),
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  js.context.callMethod('open', [
-                                    "https://youtu.be/l0Jzm5sHb6U?si=5YEwpAce2VSvWF1J"
-                                  ]);
-                                },
-                                child: Container(
-                                  color: const Color.fromARGB(255, 18, 18, 18),
-                                  height: 100,
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 20, horizontal: 10),
-                                  child: Center(
-                                    child: Text(
-                                      "\"Men are here. We Make Fire. Cook Meat.\"",
-                                      style:
-                                          bodyTextStyle.copyWith(fontSize: 24),
-                                      textAlign: TextAlign.center,
+                                  child: AnimatedContainer(
+                                    duration: const Duration(milliseconds: 500),
+                                    curve: Curves.easeOutCubic,
+                                    color: isCaptionHover
+                                        ? const Color.fromARGB(255, 40, 40, 40)
+                                        : const Color.fromARGB(255, 18, 18, 18),
+                                    height: 100,
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 20, horizontal: 10),
+                                    child: Center(
+                                      child: Text(
+                                        "\"Men are here. We Make Fire. Cook Meat.\"",
+                                        style: bodyTextStyle.copyWith(
+                                            fontSize: 24,
+                                            decoration: isCaptionHover
+                                                ? TextDecoration.underline
+                                                : TextDecoration.none),
+                                        textAlign: TextAlign.center,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -176,28 +202,67 @@ class _AboutPageState extends State<AboutPage> {
                               const SizedBox(
                                 height: 16,
                               ),
-                              Container(
-                                margin: const EdgeInsets.symmetric(vertical: 5),
-                                padding: const EdgeInsets.all(15),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    border: Border.all(color: Colors.white)),
+                              MouseRegion(
+                                
+                                onEnter: (event) {
+                                  setState(() {
+                                    isButtonHover = true;
+                                  });
+                                },
+                                onHover: (event) {
+                                  setState(() {
+                                    buttonMousePos += event.delta;
+                                    buttonMousePos += const Offset(0.12, 0.12);
+                                  });
+                                },
+                                onExit: (event) {
+                                  setState(() {
+                                    isButtonHover = false;
+                                    buttonMousePos = const Offset(0, 0);
+                                  });
+                                },
                                 child: InkWell(
                                   onTap: () {
-                                    js.context.callMethod('open', [aboutUrl]);
-                                  },
-                                  child: Text(
-                                    "My Brief life Story ↗",
-                                    style: bodyTextStyle.copyWith(
-                                      fontSize: 16,
-                                    ),
+                                      js.context
+                                          .callMethod('open', [aboutUrl]);
+                                    },
+                                  child: AnimatedContainer(
+                                    duration: const Duration(milliseconds: 500),
+                                    curve: Curves.easeOutCubic,
+                                    margin:
+                                        const EdgeInsets.symmetric(vertical: 5),
+                                    padding:
+                                        EdgeInsets.all(isButtonHover ? 30 : 15),
+                                    decoration: BoxDecoration(
+                                        color: isButtonHover
+                                            ? kTextColor
+                                            : Colors.transparent,
+                                        borderRadius: BorderRadius.circular(20),
+                                        border: Border.all(
+                                            color: isButtonHover
+                                                ? kNewBackgroundcolor
+                                                : kTextColor)),
+                                    child: Text(
+                                        "My Brief life Story ↗",
+                                        style: bodyTextStyle.copyWith(
+                                            fontSize: 16,
+                                            color: isButtonHover
+                                                ? kNewBackgroundcolor
+                                                : kTextColor),
+                                      )
+                                          .animate(
+                                              target: isButtonHover ? 0.1 : 0)
+                                          .move(
+                                            end: buttonMousePos,
+                                          ),
                                   ),
-                                ),
-                              )
-                                  .animate()
-                                  .fadeIn(
-                                      delay: 1.1.seconds, duration: .35.seconds)
-                                  .moveY(),
+                                )
+                                    .animate()
+                                    .fadeIn(
+                                        delay: 1.1.seconds,
+                                        duration: .35.seconds)
+                                    .moveY(),
+                              ),
                             ],
                           ),
                         ),
@@ -209,8 +274,10 @@ class _AboutPageState extends State<AboutPage> {
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 96,
+              AnimatedContainer(
+                duration: const Duration(milliseconds: 500),
+                curve: Curves.easeOutCubic,
+                height: isButtonHover ? 96 - 30 : 96,
               ),
               const Footer()
             ],
