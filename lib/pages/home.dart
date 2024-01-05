@@ -117,7 +117,7 @@ class HomePageState extends State<HomePage> {
                       AnimatedOpacity(
                         opacity: scrollOffset >=10? 0:1,
                         duration: const Duration(milliseconds: 500),
-                        child: Image.asset("images/scroll-hint.gif", height: 50, width: 50,).animate()
+                        child: Image.network(scrollGif, height: 50, width: 50,).animate()
                             .fadeIn(delay: 2.5.seconds, duration: .35.seconds)
                             .slide(end: const Offset(0, .2)),
                       ),

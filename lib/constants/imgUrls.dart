@@ -28,3 +28,9 @@ const liveDarbar =
 
 const pong =
     "https://firebasestorage.googleapis.com/v0/b/portfolio-a90a8.appspot.com/o/pong.gif?alt=media";
+
+const scrollGif =
+    "https://firebasestorage.googleapis.com/v0/b/portfolio-a90a8.appspot.com/o/scroll-hint.gif?alt=media";
+
+const harkStand =
+    "https://firebasestorage.googleapis.com/v0/b/portfolio-a90a8.appspot.com/o/hark-stand.jpg?alt=media";

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:portfolio/constants/colors.dart';
 import 'package:portfolio/constants/fonts.dart';
 import 'package:portfolio/constants/imgUrls.dart';
 import 'package:portfolio/constants/urls.dart';
@@ -24,7 +25,7 @@ class AboutPage extends StatelessWidget {
         thickness: 5,
         padding: const EdgeInsets.only(right: 4),
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 87),
+          padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 116),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -47,26 +48,48 @@ class AboutPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(
-                    child: InkWell(
-                      onTap: () {
-                        js.context.callMethod('open', [aboutUrl]);
-                      },
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(200),
-                            topRight: Radius.circular(200)),
-                        child: FadeInImage.memoryNetwork(
-                          placeholder: kTransparentImage,
-                          image: 'assets/images/hark-stand.jpg',
-                          height: 400,
-                          fit: BoxFit.fitWidth,
-                          alignment: Alignment.topCenter,
-                        ),
-                      ),
-                    )
-                        .animate()
-                        .fadeIn(delay: 1.1.seconds, duration: .35.seconds)
-                        .moveY(),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            js.context.callMethod('open', [aboutUrl]);
+                          },
+                          child: ClipRRect(
+                            borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(200),
+                                topRight: Radius.circular(200)),
+                            child: FadeInImage.memoryNetwork(
+                              placeholder: kTransparentImage,
+                              image: harkStand,
+                              height: 400,
+                              fit: BoxFit.cover,
+                              alignment: Alignment.topCenter,
+                            ),
+                          ),
+                        )
+                            .animate()
+                            .fadeIn(delay: 1.1.seconds, duration: .35.seconds)
+                            .moveY(),
+                        InkWell(
+                          onTap: () {
+                            js.context.callMethod('open', ["https://youtu.be/l0Jzm5sHb6U?si=5YEwpAce2VSvWF1J"]);
+                          },
+                          child: Container(
+                            color: Colors.black54,
+                            height: 100,
+                            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                            child: Center(
+                              child: Text("\"Men are here. We Make Fire. Cook Meat.\"", style: bodyTextStyle.copyWith(
+                                fontSize: 24
+                              ),
+                              textAlign: TextAlign.center,),
+                            ),
+                            
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                   const SizedBox(
                     width: 96,
@@ -77,7 +100,7 @@ class AboutPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "I am a developer learning & creating better technologies, & working from Sydney, Australia.",
+                          "I am a Developer learning & creating better technologies, working from Sydney, Australia.",
                           style: headlineStyle.copyWith(
                               fontSize: size.width > 600
                                   ? 48

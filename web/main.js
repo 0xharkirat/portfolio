@@ -20708,9 +20708,9 @@
                     b: .05,
                     duration: 1.6
                 }) : Wi.to(Ec.backColor, {
-                    r: .9,
-                    g: .9,
-                    b: .9,
+                    r: .05,
+                    g: .05,
+                    b: .05,
                     duration: 1.6
                 })
             }
@@ -20739,7 +20739,7 @@
                     "/contact/": document.querySelector('[data-page="contact"]')
                 };
                 const t = window.matchMedia("(prefers-color-scheme: dark)");
-                this.theme = t.matches ? "dark" : "light",
+                this.theme = t.matches ? "dark" : "dark",
                 this.scroll = new zo,
                 this.scroll.setTarget(document.getElementById("Content")),
                 this.changeTheme(this.theme),
@@ -20766,14 +20766,14 @@
                 this.isTransitioning || this.scroll.update(t.deltaTime)
             },
             toggleTheme() {
-                "dark" === this.theme ? this.changeTheme("light") : this.changeTheme("dark")
+                "dark" === this.theme ? this.changeTheme("dark") : this.changeTheme("dark")
             },
             changeTheme(t) {
                 "dark" === t ? (this.$page.classList.add("is-dark"),
                 document.documentElement.style.setProperty("--c-bg", "hsl(0, 0%, 5%)"),
-                document.documentElement.style.setProperty("--c-text", "hsl(0, 0%, 95%)")) : (this.$page.classList.remove("is-dark"),
-                document.documentElement.style.setProperty("--c-bg", "hsl(0, 0%, 90%)"),
-                document.documentElement.style.setProperty("--c-text", "hsl(0, 0%, 10%)")),
+                document.documentElement.style.setProperty("--c-text", "hsl(0, 0%, 95%)")) : (this.$page.classList.add("is-dark"),
+                document.documentElement.style.setProperty("--c-bg", "hsl(0, 0%, 5%)"),
+                document.documentElement.style.setProperty("--c-text", "hsl(0, 0%, 95%)")),
                 this.theme = t,
                 Uf.changeTheme(t)
             },
