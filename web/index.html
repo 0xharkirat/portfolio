@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -28,7 +29,7 @@
   <link rel="apple-touch-icon" href="download.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="download.png"/>
+  <link rel="icon" type="image/png" href="download.png" />
 
   <title>Harkirat Singh</title>
   <link rel="manifest" href="manifest.json">
@@ -39,196 +40,214 @@
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
-  
-    <!-- ... -->
+
+  <!-- ... -->
 </head>
 </head>
+
 <body>
 
   <style>
     * {
-    margin: 0;
-    padding: 0
-}
+      margin: 0;
+      padding: 0
+    }
 
 
-main,
-canvas {
-    display: block
-}
+    main,
+    canvas {
+      display: block
+    }
 
 
-:root {
-    --c-bg: hsl(0, 0%, 5%);
-
-    --pad: max(20px, 4vmin)
-}
-
-@media(prefers-color-scheme: dark) {
     :root {
+      --c-bg: hsl(0, 0%, 5%);
+
+      --pad: max(20px, 4vmin)
+    }
+
+    @media(prefers-color-scheme: dark) {
+      :root {
         --c-bg: hsl(0, 0%, 5%);
 
+      }
     }
-}
 
 
-html,
-body {
-    height: 100%
-}
+    html,
+    body {
+      height: 100%
+    }
 
-body {
-    background-color: var(--c-bg);
+    body {
+      background-color: var(--c-bg);
 
-}
-
-
-
-#Page {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background-color: var(--c-bg);
-    color: #fff;
-    white-space: nowrap;
-   
-  
-}
+    }
 
 
 
+    #Page {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: var(--c-bg);
+      color: #fff;
+      white-space: nowrap;
 
 
-#Background {
-    position: fixed;
-   
-    left: var(--pad);
-    right: var(--pad);
-    top: var(--pad);
-    bottom: var(--pad);
-    pointer-events: none;
-    overflow: hidden
-}
+    }
 
-.mask {
-    position: fixed;
-    z-index: 3;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    pointer-events: none
-}
 
-.mask_top,
-.mask_bottom {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: var(--pad);
-    background-color: var(--c-bg);
-    
-    
-    
-    
-}
 
-.mask_top {
-    top: 0
-}
 
-.mask_bottom {
-    bottom: 0
-}
 
-.frame {
-    position: fixed;
-    z-index: 10;
-    left: var(--pad);
-    right: var(--pad);
-    top: var(--pad);
-    bottom: var(--pad);
-    mix-blend-mode: difference;
-    pointer-events: none
-}
+    #Background {
+      position: fixed;
 
-.frame_line {
-    position: absolute;
-    background-color: #fff;
-    opacity: .5
-}
+      left: var(--pad);
+      right: var(--pad);
+      top: var(--pad);
+      bottom: var(--pad);
+      pointer-events: none;
+      overflow: hidden
+    }
 
-.frame_line-left {
-    left: 0;
-    top: 0;
-    width: 1px;
-    height: 100%
-}
+    .mask {
+      position: fixed;
+      z-index: 3;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none
+    }
 
-.frame_line-right {
-    right: 0;
-    top: 0;
-    width: 1px;
-    height: 100%
-}
+    .mask_top,
+    .mask_bottom {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: var(--pad);
+      background-color: var(--c-bg);
 
-.frame_line-top {
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 1px
-}
 
-.frame_line-bottom {
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 1px
-}
+
+
+    }
+
+    .mask_top {
+      top: 0
+    }
+
+    .mask_bottom {
+      bottom: 0
+    }
+
+    .frame {
+      position: fixed;
+      z-index: 10;
+      left: var(--pad);
+      right: var(--pad);
+      top: var(--pad);
+      bottom: var(--pad);
+      mix-blend-mode: difference;
+      pointer-events: none
+    }
+
+    .frame_line {
+      position: absolute;
+      background-color: #fff;
+      opacity: .5
+    }
+
+    .frame_line-left {
+      left: 0;
+      top: 0;
+      width: 1px;
+      height: 100%
+    }
+
+    .frame_line-right {
+      right: 0;
+      top: 0;
+      width: 1px;
+      height: 100%
+    }
+
+    .frame_line-top {
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 1px
+    }
+
+    .frame_line-bottom {
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px
+    }
   </style>
 
   <script>
-    window.addEventListener('load', function(ev) {
+    window.addEventListener('load', function (ev) {
       // Download main.dart.js
       _flutter.loader.loadEntrypoint({
         serviceWorker: {
           serviceWorkerVersion: serviceWorkerVersion,
         },
-        onEntrypointLoaded: function(engineInitializer) {
-          engineInitializer.initializeEngine().then(function(appRunner) {
+        onEntrypointLoaded: function (engineInitializer) {
+          engineInitializer.initializeEngine().then(function (appRunner) {
             appRunner.runApp();
           });
         }
       });
     });
+
+
+
   </script>
 
-<div id="EnterView"></div>
-    <div id="Page">
-      <div id="Background">
-        <canvas></canvas>
-      </div>
-      <div class="mask" id="Mask">
-        <div class="mask_top"></div>
-        <div class="mask_bottom"></div>
-      </div>
-      <div class="frame" id="Frame">
-        <div class="frame_line frame_line-left"></div>
-        <div class="frame_line frame_line-right"></div>
-        <div class="frame_line frame_line-top"></div>
-        <div class="frame_line frame_line-bottom"></div>
-      </div>
-
-      <main class="content" id="Content" data-scroll="area">
-        <div class="content_inner" data-scroll="target"></div>
-      </main>
+  <div id="EnterView"></div>
+  <div id="Page">
+    <div id="Background">
+      <canvas></canvas>
+    </div>
+    <div class="mask" id="Mask">
+      <div class="mask_top"></div>
+      <div class="mask_bottom"></div>
+    </div>
+    <div class="frame" id="Frame">
+      <div class="frame_line frame_line-left"></div>
+      <div class="frame_line frame_line-right"></div>
+      <div class="frame_line frame_line-top"></div>
+      <div class="frame_line frame_line-bottom"></div>
     </div>
 
 
-<script src="main.js"></script>
+    <main class="content" id="Content" data-scroll="area">
+      <div class="content_inner" data-scroll="target"></div>
+    </main>
+  </div>
+
+
+
+
+  
+
+
+  <script src="main.js"></script>
+  <script>
+    function alertMessage(text) {
+    console.log(text);
+
+    Df.toggleFontStyle(text);
+}
+  </script>
 </body>
+
 </html>
