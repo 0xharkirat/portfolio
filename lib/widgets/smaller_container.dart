@@ -96,7 +96,8 @@ class _SmallerContainerState extends ConsumerState<SmallerContainer> {
                           style: Theme.of(context)
                               .textTheme
                               .bodyMedium!
-                              .copyWith(fontFamily: currentFontGroup['body']),
+                              .copyWith(fontFamily: currentFontGroup['body'],
+                              fontSize: 16),
                         )
                       ],
                     ),

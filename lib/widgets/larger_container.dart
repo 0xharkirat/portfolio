@@ -99,6 +99,7 @@ class _LargerContainerState extends ConsumerState<LargerContainer> {
                   widget.subtitle,
                   style: Theme.of(context)
                       .textTheme.bodyMedium!.copyWith(
+                        fontSize: 16,
                         fontFamily: currentFontGroup['body']
                       ),
                 ),
