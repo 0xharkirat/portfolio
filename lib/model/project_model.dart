@@ -1,4 +1,4 @@
-import 'package:portfolio/constants/imgUrls.dart';
+import 'package:portfolio/constants/img_urls.dart';
 
 class Project {
   final String title;

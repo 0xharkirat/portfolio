@@ -1,4 +1,4 @@
-// ignore: file_names
+
 const harkLogo =
     "https://firebasestorage.googleapis.com/v0/b/portfolio-a90a8.appspot.com/o/hark-logo.png?alt=media";
 

@@ -42,7 +42,7 @@ class _FooterState extends ConsumerState<Footer> {
           children: [
             StaggeredGrid.count(
               crossAxisCount: size.width > 767 ? 2 : 1,
-              crossAxisSpacing: 100,
+              crossAxisSpacing: 200,
               mainAxisSpacing: 50,
               children: [
                 Column(
@@ -241,93 +241,42 @@ class _FooterState extends ConsumerState<Footer> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "External",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyLarge!
-                                  .copyWith(
-                                      color: Colors.white60,
-                                      fontFamily: currentFontGroup['body']),
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            const FooterLink(
-                              linkText: "Github",
-                              url: "https://github.com/0xharkirat",
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            const FooterLink(
-                              linkText: "LinkedIn",
-                              url: "https://linkedin.com/in/0xharkirat",
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            const FooterLink(
-                              linkText: "Instagram",
-                              url: "https://instagram.com/0xharkirat",
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            const FooterLink(
-                              linkText: "My Story",
-                              url: aboutUrl,
-                            ),
-                          ],
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Contact",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyLarge!
-                                  .copyWith(
-                                    fontFamily: currentFontGroup['body'],
-                                    color: Colors.white60,
-                                  ),
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            Consumer(
-                              builder: (BuildContext context, WidgetRef ref,
-                                  Widget? child) {
-                                return InkWell(
-                                  mouseCursor: SystemMouseCursors.click,
-                                  onTap: () {
-                                    ref
-                                        .read(contactProvider.notifier)
-                                        .toggleContact(context);
-                                  },
-                                  child: Text(
-                                    "Message",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyLarge!
-                                        .copyWith(
-                                            fontFamily:
-                                                currentFontGroup['body']),
-                                  ),
-                                );
-                              },
-                            )
-                          ],
-                        )
-                      ],
+                    Text(
+                      "External",
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyLarge!
+                          .copyWith(
+                              color: Colors.white60,
+                              fontFamily: currentFontGroup['body']),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const FooterLink(
+                      linkText: "Github",
+                      url: "https://github.com/0xharkirat",
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const FooterLink(
+                      linkText: "LinkedIn",
+                      url: "https://linkedin.com/in/0xharkirat",
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const FooterLink(
+                      linkText: "Instagram",
+                      url: "https://instagram.com/0xharkirat",
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const FooterLink(
+                      linkText: "My Story",
+                      url: aboutUrl,
                     )
                   ],
                 )

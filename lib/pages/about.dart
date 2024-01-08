@@ -5,7 +5,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio/constants/colors.dart';
 
-import 'package:portfolio/constants/imgUrls.dart';
+import 'package:portfolio/constants/img_urls.dart';
 import 'package:portfolio/constants/urls.dart';
 import 'package:portfolio/provider/font_provider.dart';
 import 'package:portfolio/widgets/footer.dart';
