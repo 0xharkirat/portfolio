@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:portfolio/constants/img_urls.dart';
 import 'package:portfolio/provider/font_provider.dart';
 import 'package:portfolio/widgets/footer.dart';
@@ -15,6 +16,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   bool scaleFinished = false;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -75,11 +77,13 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           Text(
                             "Hi. I'm Harkirat.",
-                            style: 
-                            Theme.of(context).textTheme.titleLarge!.copyWith(
-                                fontSize: size.width > 600
-                                    ? 96
-                                    : (size.width / 600) * 96 * 0.7,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .copyWith(
+                                    fontSize: size.width > 600
+                                        ? 96
+                                        : (size.width / 600) * 96 * 0.7,
                                     fontFamily: currentFontGroup['headline']),
                             textAlign: TextAlign.center,
                           )
@@ -88,10 +92,13 @@ class _HomePageState extends State<HomePage> {
                               .slide(end: const Offset(0, .2)),
                           Text(
                             "A Developer.",
-                            style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                                fontSize: size.width > 600
-                                    ? 96
-                                    : (size.width / 600) * 96 * 0.7,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .copyWith(
+                                    fontSize: size.width > 600
+                                        ? 96
+                                        : (size.width / 600) * 96 * 0.7,
                                     fontFamily: currentFontGroup['headline']),
                             textAlign: TextAlign.center,
                           )
@@ -101,10 +108,13 @@ class _HomePageState extends State<HomePage> {
                           const SizedBox(height: 14),
                           Text(
                             "I am learning & creating better technologies for the greater good of Humanity.",
-                            style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                                fontSize: size.width > 600
-                                    ? 20
-                                    : (size.width / 600) * 40 * 0.7,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium!
+                                .copyWith(
+                                    fontSize: size.width > 600
+                                        ? 20
+                                        : (size.width / 600) * 40 * 0.7,
                                     fontFamily: currentFontGroup['body']),
                             textAlign: TextAlign.center,
                           )

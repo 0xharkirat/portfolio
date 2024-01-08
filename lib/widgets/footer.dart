@@ -4,7 +4,6 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/constants/colors.dart';
 import 'package:portfolio/constants/urls.dart';
-import 'package:portfolio/provider/contact_provider.dart';
 import 'package:portfolio/provider/font_provider.dart';
 import 'package:portfolio/provider/weather.dart';
 import 'package:portfolio/widgets/footer_link.dart';

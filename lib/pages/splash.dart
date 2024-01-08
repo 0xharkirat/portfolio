@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:portfolio/constants/colors.dart';
 import 'package:portfolio/constants/fonts.dart';
+import 'package:portfolio/music/player.dart';
 import 'package:portfolio/pages/app_view.dart';
 
 class SplashPage extends StatefulWidget {
@@ -12,47 +13,79 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+  late PageManager pageManager;
+
   @override
   void initState() {
+    pageManager = PageManager();
     super.initState();
-    Future.delayed(const Duration(seconds: 2), () {
-      Navigator.of(context).pushReplacement(_createRoute());
-    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              "Harkirat Singh",
-              style: TextStyle(
-                  color: kTextColor,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: kAcornFonts,
-                  fontSize: 28),
-            ).animate()
-      .fadeOut(delay: 1.seconds, curve: Curves.easeOut),
-           const SizedBox(
-              width: 5,
-            ),
-           const Text(
-              "Portfolio",
-              style: TextStyle(
-                  color: kTextColor,
-                  fontWeight: FontWeight.w100,
-                  fontFamily: kAcornFonts,
-                  fontSize: 28),
-            ).animate()
-            .fadeOut(delay: 1.2.seconds,curve: Curves.easeOut)
-          ],
-        ),
-      )
-    );
+        backgroundColor: Colors.transparent,
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    "Harkirat Singh",
+                    style: TextStyle(
+                        color: kTextColor,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: kAcornFonts,
+                        fontSize: 28),
+                  ).animate().fadeOut(delay: 1.seconds, curve: Curves.easeOut),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  const Text(
+                    "Portfolio",
+                    style: TextStyle(
+                        color: kTextColor,
+                        fontWeight: FontWeight.w100,
+                        fontFamily: kAcornFonts,
+                        fontSize: 28),
+                  )
+                      .animate()
+                      .fadeOut(delay: 1.2.seconds, curve: Curves.easeOut),
+                ],
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              InkWell(
+                  splashFactory: NoSplash.splashFactory,
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () {
+                    pageManager.play();
+                    Navigator.of(context).pushReplacement(_createRoute());
+                  },
+                  child: Container(
+                      padding: const EdgeInsets.all(15),
+                      decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          borderRadius: BorderRadius.circular(20),
+                          border: Border.all(color: kTextColor)),
+                      child: Text(
+                        "Enter",
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                              fontSize: 16,
+                              color: kTextColor,
+                            ),
+                      ))).animate()
+                      .fadeIn(delay: 1.2.seconds, curve: Curves.easeOut)
+                      .moveY(begin: 20),
+                      
+            ],
+          ),
+        ));
   }
 }
 
