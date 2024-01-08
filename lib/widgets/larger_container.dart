@@ -2,11 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:portfolio/constants/fonts.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:portfolio/provider/font_provider.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'dart:js' as js;
 
-class LargerContainer extends StatefulWidget {
+class LargerContainer extends ConsumerStatefulWidget {
   const LargerContainer({
     super.key,
     required this.title,
@@ -20,10 +21,10 @@ class LargerContainer extends StatefulWidget {
   final String? linkUrl;
 
   @override
-  State<LargerContainer> createState() => _LargerContainerState();
+  ConsumerState<LargerContainer> createState() => _LargerContainerState();
 }
 
-class _LargerContainerState extends State<LargerContainer> {
+class _LargerContainerState extends ConsumerState<LargerContainer> {
   bool isHover = false;
 
   Offset imageMousePos = const Offset(0, 0);
@@ -31,6 +32,7 @@ class _LargerContainerState extends State<LargerContainer> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final currentFontGroup = ref.watch(fontProvider);
     return InkWell(
       onTap: () {
         js.context.callMethod('open', [widget.linkUrl]);
@@ -50,7 +52,7 @@ class _LargerContainerState extends State<LargerContainer> {
         onExit: (event) {
           setState(() {
             isHover = false;
-            imageMousePos = const Offset(0,0);
+            imageMousePos = const Offset(0, 0);
           });
         },
         child: AnimatedScale(
@@ -85,14 +87,20 @@ class _LargerContainerState extends State<LargerContainer> {
               children: [
                 Text(
                   widget.title,
-                  style: titleTextStyle,
+                  style: Theme.of(context)
+                      .textTheme
+                      .headlineLarge!
+                      .copyWith(fontFamily: currentFontGroup['body']),
                 ),
                 const SizedBox(
                   height: 18,
                 ),
                 Text(
                   widget.subtitle,
-                  style: descriptionTextStyle,
+                  style: Theme.of(context)
+                      .textTheme.bodyMedium!.copyWith(
+                        fontFamily: currentFontGroup['body']
+                      ),
                 ),
                 const SizedBox(
                   height: 30,
@@ -117,7 +125,7 @@ class _LargerContainerState extends State<LargerContainer> {
                     child: ClipRRect(
                       child: AnimatedScale(
                         duration: const Duration(milliseconds: 500),
-                        scale: isHover? 1.5:1,
+                        scale: isHover ? 1.5 : 1,
                         curve: Curves.easeOutCubic,
                         child: FadeInImage.memoryNetwork(
                           placeholder: kTransparentImage,

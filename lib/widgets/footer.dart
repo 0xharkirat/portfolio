@@ -1,26 +1,22 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/constants/colors.dart';
-import 'package:portfolio/constants/fonts.dart';
 import 'package:portfolio/constants/urls.dart';
 import 'package:portfolio/provider/contact_provider.dart';
+import 'package:portfolio/provider/font_provider.dart';
 import 'package:portfolio/provider/weather.dart';
 import 'package:portfolio/widgets/footer_link.dart';
 
-
 class Footer extends ConsumerWidget {
   const Footer({super.key});
-
- 
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final size = MediaQuery.of(context).size;
     AsyncValue<double> weather = ref.watch(weatherProvider);
+    final currentFontGroup = ref.watch(fontProvider);
 
     return Container(
       height: size.height - 58,
@@ -45,15 +41,16 @@ class Footer extends ConsumerWidget {
                       width: double.infinity,
                       padding: const EdgeInsets.all(30),
                       decoration: const BoxDecoration(
-                        
                         color: kNewBackgroundcolor,
                       ),
                       child: Text(
                         "🇦🇺 Working Remotely from ${weather.value ?? 21}°C Sydney, Australia.",
-                        style: bodyTextStyle.copyWith(
-                            fontSize: size.width > 600
-                                ? 16
-                                : (size.width / 600) * 20 * 0.7),
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                              fontSize: size.width > 600
+                                  ? 16
+                                  : (size.width / 600) * 20 * 0.7,
+                              fontFamily: currentFontGroup['body'],
+                            ),
                       ),
                     ),
                     const SizedBox(
@@ -67,10 +64,14 @@ class Footer extends ConsumerWidget {
                           Flexible(
                             child: Text(
                               "© 2023 Harkirat Singh • ",
-                              style: bodyTextStyle.copyWith(
-                                  fontSize: size.width > 600
-                                      ? 16
-                                      : (size.width / 600) * 20 * 0.7),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge!
+                                  .copyWith(
+                                      fontSize: size.width > 600
+                                          ? 16
+                                          : (size.width / 600) * 20 * 0.7,
+                                      fontFamily: currentFontGroup['body']),
                               softWrap: true,
                             ),
                           ),
@@ -105,8 +106,14 @@ class Footer extends ConsumerWidget {
                                                     Icons.flutter_dash),
                                                 title: Text(
                                                   'Flutter for UI',
-                                                  style: bodyTextStyle.copyWith(
-                                                      fontSize: 14),
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .bodyLarge!
+                                                      .copyWith(
+                                                          fontSize: 14,
+                                                          fontFamily:
+                                                              currentFontGroup[
+                                                                  'body']),
                                                 ),
                                               ),
                                               ListTile(
@@ -116,8 +123,14 @@ class Footer extends ConsumerWidget {
                                                     FontAwesomeIcons.js),
                                                 title: Text(
                                                   "Three.js for background animation.",
-                                                  style: bodyTextStyle.copyWith(
-                                                      fontSize: 14),
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .bodyLarge!
+                                                      .copyWith(
+                                                          fontSize: 14,
+                                                          fontFamily:
+                                                              currentFontGroup[
+                                                                  'body']),
                                                 ),
                                               ),
                                               ListTile(
@@ -127,8 +140,14 @@ class Footer extends ConsumerWidget {
                                                     FontAwesomeIcons.fire),
                                                 title: Text(
                                                   "Firebase for hosting.",
-                                                  style: bodyTextStyle.copyWith(
-                                                      fontSize: 14),
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .bodyLarge!
+                                                      .copyWith(
+                                                          fontSize: 14,
+                                                          fontFamily:
+                                                              currentFontGroup[
+                                                                  'body']),
                                                 ),
                                               ),
                                               ListTile(
@@ -138,20 +157,33 @@ class Footer extends ConsumerWidget {
                                                     FontAwesomeIcons.github),
                                                 title: Text(
                                                   'Github for versions',
-                                                  style: bodyTextStyle.copyWith(
-                                                      fontSize: 14),
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .bodyLarge!
+                                                      .copyWith(
+                                                          fontSize: 14,
+                                                          fontFamily:
+                                                              currentFontGroup[
+                                                                  'body']),
                                                 ),
                                               ),
                                             ],
                                           ),
                                         ),
-      
+
                                         // Second child: Text widget
                                         Expanded(
                                           child: Text(
                                             "Acorn for headlines, Gt for body. Design inspired from Seán Halpin's (seanhalpin.xyz) & Keita Yamada's  (p5aholic.me) portfolio websites.",
-                                            style: bodyTextStyle.copyWith(
-                                                fontSize: 16, height: 1.5),
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyLarge!
+                                                .copyWith(
+                                                    fontSize: 16,
+                                                    height: 1.5,
+                                                    fontFamily:
+                                                        currentFontGroup[
+                                                            'body']),
                                           ),
                                         ),
                                       ],
@@ -162,7 +194,12 @@ class Footer extends ConsumerWidget {
                             ),
                             child: Text(
                               "Resources",
-                              style: bodyTextStyle.copyWith(fontSize: 16),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge!
+                                  .copyWith(
+                                      fontSize: 16,
+                                      fontFamily: currentFontGroup['body']),
                             ),
                           )
                         ],
@@ -182,8 +219,12 @@ class Footer extends ConsumerWidget {
                           children: [
                             Text(
                               "External",
-                              style:
-                                  bodyTextStyle.copyWith(color: Colors.white60),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge!
+                                  .copyWith(
+                                      color: Colors.white60,
+                                      fontFamily: currentFontGroup['body']),
                             ),
                             const SizedBox(
                               height: 20,
@@ -220,9 +261,13 @@ class Footer extends ConsumerWidget {
                           children: [
                             Text(
                               "Contact",
-                              style: bodyTextStyle.copyWith(
-                                color: Colors.white60,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge!
+                                  .copyWith(
+                                    fontFamily: currentFontGroup['body'],
+                                    color: Colors.white60,
+                                  ),
                             ),
                             const SizedBox(
                               height: 20,
@@ -239,7 +284,12 @@ class Footer extends ConsumerWidget {
                                   },
                                   child: Text(
                                     "Message",
-                                    style: bodyTextStyle,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyLarge!
+                                        .copyWith(
+                                            fontFamily:
+                                                currentFontGroup['body']),
                                   ),
                                 );
                               },
@@ -257,7 +307,10 @@ class Footer extends ConsumerWidget {
             ),
             Text(
               "A 0xharkirat (Harkirat Singh) production.",
-              style: bodyTextStyle.copyWith(fontSize: 16),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyLarge!
+                  .copyWith(fontSize: 16, fontFamily: currentFontGroup['body']),
             )
           ],
         ),

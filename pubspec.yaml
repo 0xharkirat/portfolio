@@ -54,6 +54,15 @@ flutter:
     
   
   fonts:
+    - family: Monobook
+      fonts:
+        - asset: assets/fonts/PPNeueMontrealMono-Book.otf
+        
+    - family: Monothin
+      fonts:
+        - asset: assets/fonts/PPNeueMontrealMono-Thin.otf
+
+        
     - family: Acorn
       fonts:
         - asset: assets/fonts/Acorn-Regular.ttf
@@ -61,4 +70,6 @@ flutter:
     - family: Gt
       fonts:
         - asset: assets/fonts/Gt.otf
+
+    
   

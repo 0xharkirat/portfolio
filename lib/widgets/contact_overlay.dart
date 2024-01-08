@@ -3,10 +3,10 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio/constants/colors.dart';
-import 'package:portfolio/constants/fonts.dart';
 import 'package:portfolio/constants/imgUrls.dart';
 import 'package:portfolio/model/contact_model.dart';
 import 'package:portfolio/provider/chat_provider.dart';
+import 'package:portfolio/provider/font_provider.dart';
 import 'package:portfolio/widgets/chat_bubble.dart';
 import 'package:portfolio/widgets/option_button.dart';
 import 'package:transparent_image/transparent_image.dart';
@@ -63,6 +63,7 @@ class _ContactOverlayState extends ConsumerState<ContactOverlay> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final currentFontGroup = ref.watch(fontProvider);
 
     Widget common = Column(
       children: [
@@ -81,18 +82,20 @@ class _ContactOverlayState extends ConsumerState<ContactOverlay> {
           ),
           title: Text(
             "Hark Bot",
-            style: subTitleStyle.copyWith(
+            style: Theme.of(context).textTheme. titleMedium!.copyWith(
               fontWeight: FontWeight.bold,
               color: kTextColor,
               fontSize: 16,
+              fontFamily: currentFontGroup['body'],
             ),
           ),
           subtitle: Text(
             "Ask me a question",
-            style: subTitleStyle.copyWith(
+            style: Theme.of(context).textTheme. titleMedium!.copyWith(
               color: Colors.white70,
               fontSize: 14,
               fontWeight: FontWeight.bold,
+              fontFamily: currentFontGroup['body'],
             ),
           ),
           trailing: IconButton(
@@ -187,8 +190,8 @@ class _ContactOverlayState extends ConsumerState<ContactOverlay> {
                         OptionButton(
                           text: options[2].actions[0],
                           onPressed: () {
-                            js.context.callMethod(
-                                'open', ['mailto:info.sandhukirat23@gmail.com']);
+                            js.context.callMethod('open',
+                                ['mailto:info.sandhukirat23@gmail.com']);
                           },
                         ).animate(autoPlay: true).fadeIn(delay: 4.2.seconds),
                         OptionButton(
@@ -300,13 +303,9 @@ class _ContactOverlayState extends ConsumerState<ContactOverlay> {
       );
     }
 
-    if (option == 0){
-      WidgetsBinding.instance
-        .addPostFrameCallback((_) => scrollToBottom());
-
+    if (option == 0) {
+      WidgetsBinding.instance.addPostFrameCallback((_) => scrollToBottom());
     }
-
-    
 
     return content;
   }

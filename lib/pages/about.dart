@@ -2,22 +2,24 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio/constants/colors.dart';
-import 'package:portfolio/constants/fonts.dart';
+
 import 'package:portfolio/constants/imgUrls.dart';
 import 'package:portfolio/constants/urls.dart';
+import 'package:portfolio/provider/font_provider.dart';
 import 'package:portfolio/widgets/footer.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'dart:js' as js;
 
-class AboutPage extends StatefulWidget {
+class AboutPage extends ConsumerStatefulWidget {
   const AboutPage({Key? key}) : super(key: key);
 
   @override
-  State<AboutPage> createState() => _AboutPageState();
+  ConsumerState<AboutPage> createState() => _AboutPageState();
 }
 
-class _AboutPageState extends State<AboutPage> {
+class _AboutPageState extends ConsumerState<AboutPage> {
   bool isImageHover = false;
   Offset imageMousePos = const Offset(0, 0);
 
@@ -29,6 +31,7 @@ class _AboutPageState extends State<AboutPage> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final currentFontGroup = ref.watch(fontProvider);
 
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -53,10 +56,11 @@ class _AboutPageState extends State<AboutPage> {
                     ),
                     Text(
                       "Harkirat Singh.",
-                      style: headlineStyle.copyWith(
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
                           fontSize: size.width > 600
                               ? 96
-                              : (size.width / 600) * 96 * 0.7),
+                              : (size.width / 600) * 96 * 0.7,
+                              fontFamily: currentFontGroup['headline']),
                       textAlign: TextAlign.center,
                     )
                         .animate()
@@ -147,11 +151,12 @@ class _AboutPageState extends State<AboutPage> {
                                     child: Center(
                                       child: Text(
                                         "\"Men are here. We Make Fire. Cook Meat.\"",
-                                        style: bodyTextStyle.copyWith(
+                                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                                             fontSize: 24,
                                             decoration: isCaptionHover
                                                 ? TextDecoration.underline
-                                                : TextDecoration.none),
+                                                : TextDecoration.none,
+                                                fontFamily: currentFontGroup['body']),
                                         textAlign: TextAlign.center,
                                       ),
                                     ),
@@ -171,11 +176,12 @@ class _AboutPageState extends State<AboutPage> {
                             children: [
                               Text(
                                 "I am a Developer learning & creating better technologies, working from Sydney, Australia.",
-                                style: headlineStyle.copyWith(
+                                style: Theme.of(context).textTheme.titleLarge!.copyWith(
                                     fontSize: size.width > 600
                                         ? 48
                                         : (size.width / 600) * 48 * 0.7,
-                                    color: Colors.white60),
+                                    color: Colors.white60,
+                                    fontFamily: currentFontGroup['headline']),
                               )
                                   .animate()
                                   .fadeIn(
@@ -186,13 +192,14 @@ class _AboutPageState extends State<AboutPage> {
                               ),
                               Text(
                                 "Computers are my childhood's best friends.\n\nWhen I was young, my dad and I shared the same passion for computers. We were both always excited about new processors and the evolving Windows operating systems—from 98 to XP, Vista to 7. He was also my first computer teacher, introducing me to Word, Excel, Paint, PowerPoint, downloading, and other cool stuff.\n\nI still remember the day when he first showed me Excel and its incredible formula function feature; it just blew my mind. Spending time with Dad and learning about computers from him was one of the best experiences of my life. It marked the earliest form of collaboration in my life, and I learned so much more effectively.",
-                                style: bodyTextStyle.copyWith(
+                                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                                   color:
                                       const Color.fromARGB(230, 255, 255, 255),
                                   height: 1.5,
                                   fontSize: size.width > 600
                                       ? 20
                                       : (size.width / 600) * 20 * 0.7,
+                                      fontFamily: currentFontGroup['body'],
                                 ),
                               )
                                   .animate()
@@ -242,11 +249,12 @@ class _AboutPageState extends State<AboutPage> {
                                                 : kTextColor)),
                                     child: Text(
                                       "My Brief life Story ↗",
-                                      style: bodyTextStyle.copyWith(
+                                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                                           fontSize: 16,
                                           color: isButtonHover
                                               ? kNewBackgroundcolor
-                                              : kTextColor),
+                                              : kTextColor,
+                                              fontFamily: currentFontGroup['body']),
                                     )
                                         .animate(
                                             target: isButtonHover ? 0.1 : 0)

@@ -1,19 +1,22 @@
+// ignore_for_file: avoid_web_libraries_in_flutter
+
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio/constants/colors.dart';
-import 'package:portfolio/constants/fonts.dart';
+import 'package:portfolio/provider/font_provider.dart';
+
 import 'package:portfolio/widgets/navigation_bar.dart';
 import 'dart:js' as js;
-import 'dart:math' as math;
 
-class RouteView extends StatefulWidget {
+class RouteView extends ConsumerStatefulWidget {
   const RouteView({super.key, required this.child});
   final Widget child;
 
   @override
-  State<RouteView> createState() => _RouteViewState();
+  ConsumerState<RouteView> createState() => _RouteViewState();
 }
 
-class _RouteViewState extends State<RouteView> {
+class _RouteViewState extends ConsumerState<RouteView> {
   bool isMono = false;
 
   get fillColor {
@@ -24,6 +27,8 @@ class _RouteViewState extends State<RouteView> {
 
   @override
   Widget build(BuildContext context) {
+    final fontController = ref.read(fontProvider.notifier);
+    final currentFontGroup = ref.watch(fontProvider);
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Padding(
@@ -38,53 +43,49 @@ class _RouteViewState extends State<RouteView> {
               child: NavigationBarWeb(),
             ),
             Positioned(
-                left: 1, // Adjust the left position as needed
-                bottom: -10,
-                child: Transform.rotate(
-                  angle: -90 * 3.1415927 / 180,
-                  alignment: Alignment.topLeft,
-                  
-                  child: InkWell(
-                    splashColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    
-                    
-                    onTap: () {
-                        setState(() {
-                          if (!isMono) {
-                      js.context.callMethod('alertMessage', ["mono"]);
-                    } else {
-                      js.context.callMethod('alertMessage', ["notMono"]);
-                    }
+                left: 2, // Adjust the left position as needed
+                bottom: 1,
+                child: InkWell(
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () {
+                    setState(() {
+                      isMono = !isMono;
 
-                          isMono = !isMono;
-                        });
-                      },
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Container(
-                            width:
-                                10, // Adjust the size of the checkbox as needed
-                            height:
-                                10, // Adjust the size of the checkbox as needed
-                            decoration: BoxDecoration(
-                              shape: BoxShape.rectangle,
-                              color:
-                                  isMono ? Colors.white : Colors.transparent,
-                              border: Border.all(color: Colors.white),
-                            ),
-                          ),
-                          const SizedBox(width: 10),
-                          const Text(
-                            "Monospaced",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 14,
-                            ),
-                          ),
-                        ],
+                      if (isMono) {
+                        js.context.callMethod('alertMessage', ["mono"]);
+                      } else {
+                        js.context.callMethod('alertMessage', ["notMono"]);
+                      }
+                      fontController.switchFontGroup();
+                    });
+                  },
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        width:
+                            10, // Adjust the size of the checkbox as needed
+                        height:
+                            10, // Adjust the size of the checkbox as needed
+                        decoration: BoxDecoration(
+                          shape: BoxShape.rectangle,
+                          color: isMono ? kTextColor : Colors.transparent,
+                          border: Border.all(color: kTextColor),
+                        ),
                       ),
+                     const SizedBox(
+                      width: 5,
+                     ),
+                      
+                      Text("MONOSPACED",
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyLarge!
+                              .copyWith(
+                                  fontSize: 14, fontFamily: currentFontGroup['body'])),
+                    ],
                   ),
                 ))
           ],

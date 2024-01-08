@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:portfolio/constants/fonts.dart';
 import 'package:portfolio/pages/splash.dart';
 import 'package:url_strategy/url_strategy.dart';
 
@@ -18,10 +19,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp(
       title: "Harkirat Singh",
       debugShowCheckedModeBanner: false,
-      home: SplashPage(),
+      darkTheme: darkTheme,
+      home: const SplashPage(),
     );
   }
 }

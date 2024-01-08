@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/constants/fonts.dart';
 import 'package:portfolio/pages/route_view.dart';
 import 'package:portfolio/routes/route_generator.dart';
 import 'package:portfolio/routes/routes.dart';
@@ -13,6 +14,7 @@ class AppView extends StatelessWidget {
       builder: (_, child) => RouteView(
         child: child!,
       ),
+      darkTheme: darkTheme,
       initialRoute: routeHome,
       navigatorKey: navKey,
       onGenerateRoute: RouteGenerator.generateRoute,
