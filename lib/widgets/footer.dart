@@ -9,14 +9,25 @@ import 'package:portfolio/provider/font_provider.dart';
 import 'package:portfolio/provider/weather.dart';
 import 'package:portfolio/widgets/footer_link.dart';
 
-class Footer extends ConsumerWidget {
+class Footer extends ConsumerStatefulWidget {
   const Footer({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<Footer> createState() => _FooterState();
+}
+
+class _FooterState extends ConsumerState<Footer> {
+  bool isResourceHover = false;
+  @override
+  Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     AsyncValue<double> weather = ref.watch(weatherProvider);
     final currentFontGroup = ref.watch(fontProvider);
+    final isMono = currentFontGroup['body'] == 'Monobook';
+    
+    final fontResources = isMono
+        ? "PP Neue Montreal Mono for text."
+        : "Acorn for headlines, Gt for body.";
 
     return Container(
       height: size.height - 58,
@@ -84,8 +95,8 @@ class Footer extends ConsumerWidget {
                                   backgroundColor: Colors.transparent,
                                   content: Container(
                                     padding: const EdgeInsets.all(20),
-                                    width: 350,
-                                    height: 250,
+                                    width: isMono? 380: 350,
+                                    height: isMono? 280: 250,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
                                       border: Border.all(color: Colors.white38),
@@ -172,9 +183,12 @@ class Footer extends ConsumerWidget {
                                         ),
 
                                         // Second child: Text widget
+                                        Visibility(
+                                          visible: isMono,
+                                          child: const SizedBox(width: 5,)),
                                         Expanded(
                                           child: Text(
-                                            "Acorn for headlines, Gt for body. Design inspired from Seán Halpin's (seanhalpin.xyz) & Keita Yamada's  (p5aholic.me) portfolio websites.",
+                                            "$fontResources Design inspired from Seán Halpin's (seanhalpin.xyz) & Keita Yamada's  (p5aholic.me) portfolio websites.",
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .bodyLarge!
@@ -192,14 +206,31 @@ class Footer extends ConsumerWidget {
                                 );
                               },
                             ),
-                            child: Text(
-                              "Resources",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyLarge!
-                                  .copyWith(
+                            child: MouseRegion(
+                              onEnter: (event) {
+                                setState(() {
+                                  isResourceHover = true;
+                                });
+                              },
+                              onExit: (event) {
+                                setState(() {
+                                  isResourceHover = false;
+                                });
+                              },
+                              child: Text(
+                                "Resources",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge!
+                                    .copyWith(
                                       fontSize: 16,
-                                      fontFamily: currentFontGroup['body']),
+                                      fontFamily: currentFontGroup['body'],
+                                      color: isResourceHover
+                                          ? const Color.fromARGB(
+                                              255, 179, 179, 179)
+                                          : kTextColor,
+                                    ),
+                              ),
                             ),
                           )
                         ],
