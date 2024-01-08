@@ -74,7 +74,7 @@ class _FooterState extends ConsumerState<Footer> {
                         children: [
                           Flexible(
                             child: Text(
-                              "© 2023 Harkirat Singh • ",
+                              "© 2024 Harkirat Singh • ",
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyLarge!
