@@ -20,7 +20,7 @@ class NavItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       decoration: BoxDecoration(
         color: selected
             ? Colors.white10
@@ -28,6 +28,7 @@ class NavItem extends StatelessWidget {
         
       ),
       child: IconButton(
+        tooltip: message,
         splashRadius: 1,
         mouseCursor: SystemMouseCursors.click,
         onPressed: () {

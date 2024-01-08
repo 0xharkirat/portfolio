@@ -34,58 +34,61 @@ class _RouteViewState extends ConsumerState<RouteView> {
       body: Padding(
         padding: const EdgeInsets.all(31),
         child: Stack(
-          alignment: Alignment.centerLeft,
+          alignment: Alignment.center,
           clipBehavior: Clip.none,
           children: [
             widget.child,
             const Positioned(
-              left: 0,
+              top: 0,
               child: NavigationBarWeb(),
             ),
             Positioned(
                 left: 2, // Adjust the left position as needed
-                bottom: 1,
-                child: InkWell(
-                  splashColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  onTap: () {
-                    setState(() {
-                      isMono = !isMono;
-
-                      if (isMono) {
-                        js.context.callMethod('alertMessage', ["mono"]);
-                      } else {
-                        js.context.callMethod('alertMessage', ["notMono"]);
-                      }
-                      fontController.switchFontGroup();
-                    });
-                  },
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        width:
-                            10, // Adjust the size of the checkbox as needed
-                        height:
-                            10, // Adjust the size of the checkbox as needed
-                        decoration: BoxDecoration(
-                          shape: BoxShape.rectangle,
-                          color: isMono ? kTextColor : Colors.transparent,
-                          border: Border.all(color: kTextColor),
+                top: 1,
+                child: Container(
+                  color: kNewBackgroundcolor,
+                  child: InkWell(
+                    splashColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () {
+                      setState(() {
+                        isMono = !isMono;
+                
+                        if (isMono) {
+                          js.context.callMethod('alertMessage', ["mono"]);
+                        } else {
+                          js.context.callMethod('alertMessage', ["notMono"]);
+                        }
+                        fontController.switchFontGroup();
+                      });
+                    },
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          width:
+                              10, // Adjust the size of the checkbox as needed
+                          height:
+                              10, // Adjust the size of the checkbox as needed
+                          decoration: BoxDecoration(
+                            shape: BoxShape.rectangle,
+                            color: isMono ? kTextColor : Colors.transparent,
+                            border: Border.all(color: kTextColor),
+                          ),
                         ),
-                      ),
-                     const SizedBox(
-                      width: 5,
-                     ),
-                      
-                      Text("MONOSPACED",
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyLarge!
-                              .copyWith(
-                                  fontSize: 14, fontFamily: currentFontGroup['body'])),
-                    ],
+                       const SizedBox(
+                        width: 5,
+                       ),
+                        
+                        Text("MONOSPACED",
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyLarge!
+                                .copyWith(
+                                    fontSize: 14, fontFamily: currentFontGroup['body'])),
+                      ],
+                    ),
                   ),
                 ))
           ],

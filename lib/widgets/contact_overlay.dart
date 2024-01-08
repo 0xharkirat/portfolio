@@ -99,6 +99,8 @@ class _ContactOverlayState extends ConsumerState<ContactOverlay> {
             ),
           ),
           trailing: IconButton(
+            tooltip: "Close",
+            splashRadius: 20,
             icon: const Icon(
               Icons.close,
               color: kTextColor,
@@ -114,7 +116,7 @@ class _ContactOverlayState extends ConsumerState<ContactOverlay> {
           child: Container(
             clipBehavior: Clip.antiAlias,
             decoration: const BoxDecoration(
-              color: Color.fromARGB(255, 18, 18, 18),
+              color: kNewBackgroundcolor,
               backgroundBlendMode: BlendMode.darken,
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(10),
@@ -290,7 +292,7 @@ class _ContactOverlayState extends ConsumerState<ContactOverlay> {
           borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(10), topRight: Radius.circular(10)),
           child: Container(
-              height: 600,
+              height: size.height * 0.75,
               width: 350,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),

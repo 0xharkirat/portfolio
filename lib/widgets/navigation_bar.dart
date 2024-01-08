@@ -22,13 +22,13 @@ class _NavigationBarWebState extends State<NavigationBarWeb> {
       decoration: const BoxDecoration(
           color: kNewBackgroundcolor,
           border: Border(
-              top: BorderSide(color: Color.fromARGB(127, 255, 255, 255)),
+              left: BorderSide(color: Color.fromARGB(127, 255, 255, 255)),
               right:
                   BorderSide(color: Color.fromARGB(127, 255, 255, 255)),
               bottom:
                   BorderSide(color: Color.fromARGB(127, 255, 255, 255)))),
       padding: const EdgeInsets.symmetric(horizontal: 2),
-      child: Column(
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           NavItem(
@@ -62,8 +62,9 @@ class _NavigationBarWebState extends State<NavigationBarWeb> {
     return Consumer(
       builder: (BuildContext context, WidgetRef ref, Widget? child) {
         return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: IconButton(
+            tooltip: 'Message',
             splashRadius: 1,
             mouseCursor: SystemMouseCursors.click,
             icon: const Icon(

@@ -12,20 +12,17 @@ class OptionButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentFontGroup = ref.watch(fontProvider);
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 5),
-      padding: const EdgeInsets.all(15),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-          color: Colors.white
-        )
-      ),
-      
-     
-      child: InkWell(
-        
-        onTap: onPressed,
+    return InkWell(
+      onTap: onPressed,
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 5),
+        padding: const EdgeInsets.all(15),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(
+            color: Colors.white
+          )
+        ),
         child: Text(text, style: Theme.of(context)
                       .textTheme.bodyLarge!.copyWith(
           fontSize: 16,
