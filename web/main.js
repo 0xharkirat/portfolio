@@ -1,4 +1,10 @@
 /*! For license information please see main.js.LICENSE.txt */
+
+
+/* The original owner & creator of this code is Keita Yamada https://p5aholic.me/. I have modified some of the functions of this code to communicate with my Flutter Code. But the original credit goes to Keita Yamada for making this cool animation.
+*/
+
+
 (() => {
   var t = {
       575: (t) => {

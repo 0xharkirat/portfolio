@@ -213,6 +213,10 @@
   </script>
 
   <div id="EnterView"></div>
+
+  <audio id="myAudio" loop hidden>
+    <source src="https://firebasestorage.googleapis.com/v0/b/portfolio-a90a8.appspot.com/o/background.mp3?alt=media" type="audio/mp3">
+</audio>
   <div id="Page">
     <div id="Background">
       <canvas></canvas>
@@ -242,6 +246,23 @@
 
   <script src="main.js"></script>
   <script>
+    console.log("%cThe original owner & creator of the background animation is \"Keita Yamada\" https://p5aholic.me/.\n\n\"I have modified some of the functions of the animation code to communicate with my Flutter Code.\"\n\n\"But the original credit goes to Keita Yamada for making this cool animation.\"", "font-size: 20px; font-weight: bold")
+
+    var audio = document.getElementById("myAudio");
+    audio.volume = 0.03;
+
+    // Play the audio
+    function playAudio() {
+
+        audio.play();
+    }
+
+    // Pause the audio
+    function pauseAudio() {
+        audio.pause();
+    }
+
+
     function alertMessage(text) {
 
     Df.toggleFontStyle(text);

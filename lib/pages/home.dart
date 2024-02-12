@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:just_audio/just_audio.dart';
 import 'package:portfolio/constants/img_urls.dart';
 import 'package:portfolio/provider/font_provider.dart';
 import 'package:portfolio/widgets/footer.dart';

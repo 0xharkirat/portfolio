@@ -1,8 +1,10 @@
+// ignore_for_file: avoid_web_libraries_in_flutter
+
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:portfolio/constants/colors.dart';
 import 'package:portfolio/constants/fonts.dart';
-import 'package:portfolio/music/player.dart';
+import 'dart:js' as js;
 import 'package:portfolio/pages/app_view.dart';
 
 class SplashPage extends StatefulWidget {
@@ -13,13 +15,9 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  late PageManager pageManager;
+  
 
-  @override
-  void initState() {
-    pageManager = PageManager();
-    super.initState();
-  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +62,7 @@ class _SplashPageState extends State<SplashPage> {
                   splashColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () {
-                    pageManager.play();
+                    js.context.callMethod('playAudio', []);
                     Navigator.of(context).pushReplacement(_createRoute());
                   },
                   child: Container(

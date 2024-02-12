@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -94,8 +95,8 @@ class _FooterState extends ConsumerState<Footer> {
                                   backgroundColor: Colors.transparent,
                                   content: Container(
                                     padding: const EdgeInsets.all(20),
-                                    width: isMono? 380: 350,
-                                    height: isMono? 280: 250,
+                                    width: isMono? 450: 400,
+                                    height: isMono? 330: 300,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
                                       border: Border.all(color: Colors.white38),
@@ -132,7 +133,7 @@ class _FooterState extends ConsumerState<Footer> {
                                                 leading: const Icon(
                                                     FontAwesomeIcons.js),
                                                 title: Text(
-                                                  "Three.js for background animation.",
+                                                  "Three.js & WebGL for background animation.",
                                                   style: Theme.of(context)
                                                       .textTheme
                                                       .bodyLarge!
@@ -177,6 +178,23 @@ class _FooterState extends ConsumerState<Footer> {
                                                                   'body']),
                                                 ),
                                               ),
+                                              ListTile(
+                                                contentPadding: EdgeInsets.zero,
+                                                iconColor: kTextColor,
+                                                leading: const Icon(
+                                                    FontAwesomeIcons.youtube),
+                                                title: Text(
+                                                  'Last Train to Mars from YouTube Audio Library.',
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .bodyLarge!
+                                                      .copyWith(
+                                                          fontSize: 14,
+                                                          fontFamily:
+                                                              currentFontGroup[
+                                                                  'body']),
+                                                ),
+                                              ),
                                             ],
                                           ),
                                         ),
@@ -187,13 +205,13 @@ class _FooterState extends ConsumerState<Footer> {
                                           child: const SizedBox(width: 5,)),
                                         Expanded(
                                           child: Text(
-                                            "$fontResources Design inspired from Seán Halpin's (seanhalpin.xyz) & Keita Yamada's  (p5aholic.me) portfolio websites.",
+                                            "$fontResources Design inspired from Seán Halpin's (seanhalpin.xyz) & Keita Yamada's  (p5aholic.me) portfolio websites. Keita Yamada is original owner & creator of background animation.",
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .bodyLarge!
                                                 .copyWith(
                                                     fontSize: 16,
-                                                    height: 1.5,
+                                                    height: isMono? 1.25: 1.5,
                                                     fontFamily:
                                                         currentFontGroup[
                                                             'body']),
@@ -223,6 +241,7 @@ class _FooterState extends ConsumerState<Footer> {
                                     .bodyLarge!
                                     .copyWith(
                                       fontSize: 16,
+                                      decoration: TextDecoration.underline,
                                       fontFamily: currentFontGroup['body'],
                                       color: isResourceHover
                                           ? const Color.fromARGB(
@@ -284,13 +303,23 @@ class _FooterState extends ConsumerState<Footer> {
             const SizedBox(
               height: 48,
             ),
-            Text(
-              "A 0xharkirat (Harkirat Singh) production.",
+            DefaultTextStyle(
+              textAlign: TextAlign.center,
               style: Theme.of(context)
                   .textTheme
                   .bodyLarge!
                   .copyWith(fontSize: 16, fontFamily: currentFontGroup['body']),
+              child: AnimatedTextKit(
+                
+                repeatForever: true,
+                animatedTexts: [
+                  TypewriterAnimatedText("Keita Yamada (https://p5aholic.me) is original creator & owner of the background animation.", speed: const Duration(milliseconds: 100), textAlign: TextAlign.center),
+                  TypewriterAnimatedText("A 0xharkirat (Harkirat Singh) production." ,speed: const Duration(milliseconds: 100)),
+                  
+                ],
+              ),
             )
+            
           ],
         ),
       ),

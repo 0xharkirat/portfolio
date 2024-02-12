@@ -18,6 +18,7 @@ class RouteView extends ConsumerStatefulWidget {
 
 class _RouteViewState extends ConsumerState<RouteView> {
   bool isMono = false;
+  bool off = false;
 
   get fillColor {
     return isMono
@@ -46,14 +47,17 @@ class _RouteViewState extends ConsumerState<RouteView> {
                 left: 2, // Adjust the left position as needed
                 top: 1,
                 child: Container(
-                  color: kNewBackgroundcolor,
+                  color: Colors.black54,
+                  padding: const EdgeInsets.all(5),
+                  
                   child: InkWell(
+                    
                     splashColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () {
                       setState(() {
                         isMono = !isMono;
-                
+
                         if (isMono) {
                           js.context.callMethod('alertMessage', ["mono"]);
                         } else {
@@ -77,18 +81,37 @@ class _RouteViewState extends ConsumerState<RouteView> {
                             border: Border.all(color: kTextColor),
                           ),
                         ),
-                       const SizedBox(
-                        width: 5,
-                       ),
-                        
+                        const SizedBox(
+                          width: 5,
+                        ),
                         Text("MONOSPACED",
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyLarge!
                                 .copyWith(
-                                    fontSize: 14, fontFamily: currentFontGroup['body'])),
+                                    fontSize: 14,
+                                    fontFamily: currentFontGroup['body'])),
                       ],
                     ),
+                  ),
+                )),
+            Positioned(
+                top: 0,
+                right: 0,
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 500),
+                  child: IconButton(
+                    tooltip: off? "Play" :"Mute",
+                    icon: Icon(
+                      off ? Icons.volume_up : Icons.volume_off,
+                      color: kTextColor,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        off = !off;
+                        off? js.context.callMethod("pauseAudio", []):js.context.callMethod("playAudio", []);
+                      });
+                    },
                   ),
                 ))
           ],
