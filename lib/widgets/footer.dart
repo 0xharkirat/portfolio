@@ -1,4 +1,4 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -127,23 +127,7 @@ class _FooterState extends ConsumerState<Footer> {
                                                                   'body']),
                                                 ),
                                               ),
-                                              ListTile(
-                                                contentPadding: EdgeInsets.zero,
-                                                iconColor: kTextColor,
-                                                leading: const Icon(
-                                                    FontAwesomeIcons.js),
-                                                title: Text(
-                                                  "Three.js & WebGL for background animation.",
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .bodyLarge!
-                                                      .copyWith(
-                                                          fontSize: 14,
-                                                          fontFamily:
-                                                              currentFontGroup[
-                                                                  'body']),
-                                                ),
-                                              ),
+                                              
                                               ListTile(
                                                 contentPadding: EdgeInsets.zero,
                                                 iconColor: kTextColor,
@@ -205,7 +189,7 @@ class _FooterState extends ConsumerState<Footer> {
                                           child: const SizedBox(width: 5,)),
                                         Expanded(
                                           child: Text(
-                                            "$fontResources Design inspired from Seán Halpin's (seanhalpin.xyz) & Keita Yamada's  (p5aholic.me) portfolio websites. Keita Yamada is original owner & creator of background animation.",
+                                            "$fontResources Design inspired from Seán Halpin's (seanhalpin.xyz).",
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .bodyLarge!
@@ -303,22 +287,11 @@ class _FooterState extends ConsumerState<Footer> {
             const SizedBox(
               height: 48,
             ),
-            DefaultTextStyle(
-              textAlign: TextAlign.center,
-              style: Theme.of(context)
+            Text("A 0xharkirat (Harkirat Singh) production.", style: Theme.of(context)
                   .textTheme
                   .bodyLarge!
-                  .copyWith(fontSize: 16, fontFamily: currentFontGroup['body']),
-              child: AnimatedTextKit(
-                
-                repeatForever: true,
-                animatedTexts: [
-                  TypewriterAnimatedText("Keita Yamada (https://p5aholic.me) is original creator & owner of the background animation.", speed: const Duration(milliseconds: 100), textAlign: TextAlign.center),
-                  TypewriterAnimatedText("A 0xharkirat (Harkirat Singh) production." ,speed: const Duration(milliseconds: 100)),
-                  
-                ],
-              ),
-            )
+                  .copyWith(fontSize: 16, fontFamily: currentFontGroup['body']),)
+            
             
           ],
         ),
